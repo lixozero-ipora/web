@@ -23,6 +23,16 @@
 		"no-tabs": "off",
 		"semi": "off",
 		"indent": ["error", "tab"],
-		"react/jsx-indent": [true, "tab"]
+		"react/jsx-indent": "off",
+		"import/extensions": "off",
+		"no-use-before-define": "off",
+		"@typescript-eslint/no-use-before-define": ["error"]
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		}
 	}
 }
