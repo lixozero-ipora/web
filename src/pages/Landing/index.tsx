@@ -1,7 +1,12 @@
 import React from 'react'
+import NavBar from '../../components/navbar'
 
-function Landing() {
-	return <div>Landing</div>
+const Landing: React.FC = () => {
+	return (
+		<>
+			<NavBar />
+		</>
+	)
 }
 
 export default Landing
