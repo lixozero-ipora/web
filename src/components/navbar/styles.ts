@@ -19,7 +19,7 @@ export const Nav = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	flex-wrap: wrap;
-	background: #28a443;
+	background: var(--color-green);
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -63,7 +63,7 @@ export const Menu = styled.div<{ isOpen: boolean }>`
 	justify-content: space-between;
 	align-items: center;
 	position: relative;
-	background: #28a443;
+	background: var(--color-green);
 
 	@media (max-width: 768px) {
 		overflow: hidden;
