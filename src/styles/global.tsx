@@ -13,10 +13,15 @@ export default createGlobalStyle`
   }
   body{
     background: #ebebeb;
+    font-family: Poppins, Arial, Helvetica, sans-serif;
   }
   button {
     cursor: pointer;
   }
+  
+  button, input, textarea {
+    font-family: Poppins, Arial, Helvetica, sans-serif;
+  } 
 
   a {
     text-decoration: none;
