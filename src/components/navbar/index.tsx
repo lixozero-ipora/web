@@ -16,7 +16,7 @@ const NavBar: React.FC = () => {
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	return (
 		<Nav>
-			<Link to="/" style={{ textDecoration: 'none' }}>
+			<Link to="/">
 				<Logo>
 					<img src={logo} alt="recilagem" />
 					<div>
