@@ -1,17 +1,16 @@
 import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import StyleGlobal from './styles/global'
 import Routes from './routes'
+import 'leaflet/dist/leaflet.css'
 
-function App() {
-	return (
-		<BrowserRouter>
-			<Routes />
-			<StyleGlobal />
-		</BrowserRouter>
-	)
-}
+const App: React.FC = () => (
+	<HashRouter basename={process.env.PUBLIC_URL}>
+		<Routes />
+		<StyleGlobal />
+	</HashRouter>
+)
 
 export default App
