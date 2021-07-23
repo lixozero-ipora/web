@@ -1,15 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { FaSearch } from 'react-icons/fa'
-import {
-	Nav,
-	Logo,
-	Hamburger,
-	Menu,
-	MenuLink,
-	Search,
-	ButtonCad,
-} from './styles'
+import { Nav, Logo, Hamburger, Menu, MenuLink } from './styles'
 import logo from '../../assets/images/recycling.svg'
 
 const NavBar: React.FC = () => {
@@ -31,16 +22,16 @@ const NavBar: React.FC = () => {
 				<span />
 			</Hamburger>
 			<Menu isOpen={isOpen}>
-				<MenuLink to="">SOBRE</MenuLink>
-				<MenuLink to="">POSTS</MenuLink>
-				<MenuLink to="">CONTATOS</MenuLink>
-				<Search>
+				<MenuLink to="/">Página inicial</MenuLink>
+				<MenuLink to="/horarios">Horários</MenuLink>
+				<MenuLink to="/denuncia">Denúncia</MenuLink>
+				{/* <Search>
 					<input type="text" />
 					<button type="submit">
 						<FaSearch style={{ fontSize: 18 }} />
 					</button>
 				</Search>
-				<ButtonCad>CADASTRE</ButtonCad>
+				<ButtonCad>CADASTRE</ButtonCad> */}
 			</Menu>
 		</Nav>
 	)

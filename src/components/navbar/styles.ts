@@ -8,8 +8,14 @@ export const MenuLink = styled(Link)`
 	text-decoration: none;
 	color: #fff;
 	transition: all 0.3s ease-in;
-	font-size: 0.9rem;
+	font-size: 2rem;
 	font-weight: bold;
+
+	transition: letter-spacing 300ms ease;
+
+	:hover {
+		letter-spacing: 2px;
+	}
 `
 
 export const Nav = styled.div`
@@ -20,10 +26,7 @@ export const Nav = styled.div`
 	align-items: center;
 	flex-wrap: wrap;
 	background: var(--color-green);
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
+	z-index: 2;
 `
 
 export const Logo = styled.div`
@@ -39,13 +42,13 @@ export const Logo = styled.div`
 		flex-direction: column;
 		h1 {
 			font-weight: bold;
-			font-size: 1.3rem;
+			font-size: 2.3rem;
 			color: #fff;
 		}
 
 		h3 {
 			font-weight: 300;
-			font-size: 1rem;
+			font-size: 1.6rem;
 			color: #fff;
 		}
 	}
@@ -64,12 +67,15 @@ export const Menu = styled.div<{ isOpen: boolean }>`
 	align-items: center;
 	position: relative;
 	background: var(--color-green);
+	z-index: 1;
 
 	@media (max-width: 768px) {
 		overflow: hidden;
 		flex-direction: column;
 		max-height: ${({ isOpen }) => (isOpen ? '300px' : '0')};
-		transition: max-height 0.3s ease-in;
+		transition: max-height 0.5s ease-in;
+		border-bottom-right-radius: 20px;
+		border-bottom-left-radius: 20px;
 		width: 100%;
 	}
 `
