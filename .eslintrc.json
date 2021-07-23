@@ -6,7 +6,10 @@
 	"extends": [
 		"plugin:react/recommended",
 		"airbnb",
-		"plugin:prettier/recommended"
+		"plugin:prettier/recommended",
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
@@ -26,7 +29,9 @@
 		"react/jsx-indent": "off",
 		"import/extensions": "off",
 		"no-use-before-define": "off",
-		"@typescript-eslint/no-use-before-define": ["error"]
+		"@typescript-eslint/no-use-before-define": ["error"],
+		"import/prefer-default-export": "off",
+		"react/prop-types": "off"
 	},
 	"settings": {
 		"import/resolver": {
