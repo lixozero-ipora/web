@@ -7,11 +7,7 @@ export interface ScheduleItem {
 	updated_at: Date
 }
 
-export interface EditSchedule extends ScheduleItem {
-	isActive: boolean
-}
-
 export interface EditingSchedule {
 	editing: string[]
-	items: EditSchedule[]
+	items: ScheduleItem[]
 }
