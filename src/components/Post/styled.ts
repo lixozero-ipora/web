@@ -11,11 +11,14 @@ export const PostContainer = styled.div`
 `
 
 export const PostImage = styled.img`
+	background-color: white;
+	padding: 5px;
+
 	display: block;
 	width: 30%;
 	border-radius: 10px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	object-fit: cover;
+	object-fit: contain;
 
 	@media (max-width: 768px) {
 		width: 100%;
@@ -47,6 +50,13 @@ export const PostContent = styled.div`
 
 export const PostTitle = styled.strong`
 	font-size: 4rem;
+	display: flex;
+	align-items: center;
+
+	span {
+		display: flex;
+		margin-right: 10px;
+	}
 `
 
 export const PostText = styled.p`

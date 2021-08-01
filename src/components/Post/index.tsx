@@ -13,6 +13,8 @@ interface PostProps {
 	title: string
 	text: string
 	image: string
+	preventAnimation?: boolean
+	titleIcon?: React.ReactElement
 	showReadMore?: boolean
 	onReadMore?: () => void
 }
@@ -21,13 +23,18 @@ const Post: React.FC<PostProps> = ({
 	title,
 	text,
 	image,
+	preventAnimation,
+	titleIcon,
 	showReadMore,
 	onReadMore,
 }) => (
-	<PostContainer>
+	<PostContainer data-aos={preventAnimation ? null : 'fade-right'}>
 		<PostImage src={image} />
 		<PostContent>
-			<PostTitle>{title}</PostTitle>
+			<PostTitle>
+				<span>{titleIcon}</span>
+				{title}
+			</PostTitle>
 			<PostText>{text}</PostText>
 			{showReadMore && (
 				<ButtonContainer>
