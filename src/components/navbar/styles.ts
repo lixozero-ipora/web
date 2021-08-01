@@ -8,7 +8,7 @@ export const MenuLink = styled(Link)`
 	text-decoration: none;
 	color: #fff;
 	transition: all 0.3s ease-in;
-	font-size: 2rem;
+	font-size: 1.6rem;
 	font-weight: bold;
 	margin-left: 5px;
 
