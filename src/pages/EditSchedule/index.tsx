@@ -56,7 +56,6 @@ const EditSchedule: React.FC = () => {
 			await api.put('/schedules', { schedules: schedules.items })
 			swal('Sucesso', 'A edição foi um sucesso!', 'success')
 		} catch (error) {
-			console.log(error)
 			swal(
 				'Houve um erro',
 				'Houve um erro atualizando as datas por favor, tente mais tarde',
