@@ -25,13 +25,20 @@
 		"react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
 		"no-tabs": "off",
 		"semi": "off",
-		"indent": ["error", "tab"],
+		"indent": ["off", "tab"],
+		"no-mixed-spaces-and-tabs": "off",
 		"react/jsx-indent": "off",
 		"import/extensions": "off",
 		"no-use-before-define": "off",
-		"@typescript-eslint/no-use-before-define": ["error"],
 		"import/prefer-default-export": "off",
-		"react/prop-types": "off"
+		"react/prop-types": "off",
+		"jsx-a11y/label-has-associated-control": "off",
+		"dot-notation": "off",
+		"camelcase": "warn",
+		"@typescript-eslint/no-use-before-define": [
+			"error",
+			{ "functions": false, "variables": false }
+		]
 	},
 	"settings": {
 		"import/resolver": {
