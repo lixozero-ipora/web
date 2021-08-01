@@ -1,8 +1,11 @@
 import styled, { css } from 'styled-components'
+import { CardWithBrandThreeTexts } from '../../components/Common/styles'
 
 interface ComplaintButtonProps {
 	isValid?: boolean
 }
+
+export const ComplaintStep = styled(CardWithBrandThreeTexts)``
 
 export const ComplaintMapContainer = styled.div`
 	width: 100%;
@@ -11,10 +14,11 @@ export const ComplaintMapContainer = styled.div`
 	border-radius: 10px;
 
 	overflow: hidden;
+	margin-top: 27px;
 `
 
 export const ComplaintContentContainer = styled.div`
-	width: 60%;
+	width: 70%;
 	margin: 30px auto;
 
 	background-color: #fff;
@@ -23,20 +27,24 @@ export const ComplaintContentContainer = styled.div`
 
 	padding: 20px;
 
-	p {
+	> p {
 		width: 80%;
 		margin: 15px auto;
 	}
 
-	strong {
+	> strong {
 		display: block;
 		text-align: center;
+	}
+
+	form {
+		margin-bottom: 20px;
 	}
 
 	@media (max-width: 768px) {
 		width: 90%;
 
-		p {
+		> p {
 			width: 100%;
 		}
 	}

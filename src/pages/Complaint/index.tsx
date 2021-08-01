@@ -1,28 +1,40 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { MapContainer, TileLayer } from 'react-leaflet'
 import { LeafletMouseEvent } from 'leaflet'
+import { BsPencilSquare } from 'react-icons/bs'
+import { SiOpenstreetmap } from 'react-icons/si'
 import swal from 'sweetalert'
+import { MdHearing } from 'react-icons/md'
 
 import NavBar from '../../components/Navbar'
 import {
 	ComplaintButton,
 	ComplaintContentContainer,
 	ComplaintMapContainer,
+	ComplaintStep,
 } from './styles'
 import {
+	BlurredImageContainer,
 	ContentContainer,
 	ContentText,
+	Image,
 	Title,
 } from '../../components/Common/styles'
+import complaintSVG from '../../assets/images/complaint.svg'
 import LocationMarker from '../../components/LocationMarker'
 import useScrollTop from '../../hooks/useScrollTop'
 import Footer from '../../components/Footer'
+import AnimatedInputText from '../../components/AnimatedInputText'
 
 const Complaint: React.FC = () => {
 	useScrollTop()
 	const { push } = useHistory()
 	const [position, setPosition] = useState({ latitude: 0, longitude: 0 })
+	const [name, setName] = useState('')
+	const [adress, setAdress] = useState('')
+	const [whatsapp, setWhatsapp] = useState('')
+	const [description, setDescripion] = useState('')
 
 	const handleClickComplaint = () => {
 		const complainedKey = localStorage.getItem('@complained')
@@ -33,8 +45,8 @@ const Complaint: React.FC = () => {
 			// Day that the person complained + 3 days
 			if (complainedDate.getTime() + 60 * 3600 * 72 > Date.now()) {
 				swal(
-					'Parece que você já denunciou',
-					'É necessário um intervalo antes da próxima denúncia, tente novamente após três dias da última denúncia.',
+					'Parece que você já reclamou',
+					'Tente novamente após três dias da última reclamação.',
 					'error'
 				).then(() => {
 					push('/')
@@ -46,7 +58,7 @@ const Complaint: React.FC = () => {
 		if (!position.latitude) {
 			swal(
 				'Localização necessária',
-				'Você precisa selecionar um local no mapa para a denúncia.',
+				'Você precisa selecionar um local no mapa para a reclamação.',
 				'error'
 			)
 			return
@@ -54,8 +66,8 @@ const Complaint: React.FC = () => {
 
 		localStorage.setItem('@complained', JSON.stringify({ date: Date.now() }))
 		swal(
-			'Denúncia registrada',
-			'Muito obrigado! A sua denúncia foi registrada',
+			'Reclamação registrada',
+			'Muito obrigado! A sua reclamação foi registrada.',
 			'success'
 		).then(() => {
 			push('/')
@@ -72,35 +84,74 @@ const Complaint: React.FC = () => {
 	return (
 		<>
 			<NavBar />
+			<BlurredImageContainer>
+				<Image src={complaintSVG} />
+			</BlurredImageContainer>
 			<ContentContainer>
-				<Title>Denúncia</Title>
+				<Title>
+					<span>
+						<MdHearing size={60} />
+					</span>{' '}
+					Reclame Aqui
+				</Title>
 				<ContentText>
 					<p>
-						Sempre antes de efutar uma denúncia verifique os horários, para ter
-						certeza que o caminhão de coleta ainda não passou pela sua região.
+						A prefeitura dispõe desta ferramenta de feedback com o objetivo de
+						fornecer informações para aprimoramento do planejamento e execução
+						de rotas percorridas pelo caminhão coletor ou das estratégias de
+						recolhimento de lixo planejada e executada pelos coletores.
 					</p>
-
 					<p>
-						A prefeitura espera um feedback para que possam ser feitas
-						alterações no planejamento quanto à rotas de coleta. E para que seja
-						visível esse feeback é necessário um local onde a coleta não
-						ocorreu, desta forma os agentes públicos conseguem avaliar uma nova
-						forma de atender toda a população.
+						Desta forma, o gestor público encarregado pode ampliar de forma
+						operacional a cobertura da política de coleta urbana em todas as
+						casas iporaenses, assim como fiscalizar todo o processo.
 					</p>
+					<p>
+						Para efetuar uma reclamação, se caso o caminhão de coleta não passou
+						pela sua região, deve ser verificado primeiro as data pré-definidas{' '}
+						<Link to="/datas">aqui</Link>.
+					</p>
+					<p>Então, siga o passo a passo da seguinte forma:</p>
 				</ContentText>
 			</ContentContainer>
 			<ComplaintContentContainer>
-				<strong>Como a denúncia funciona?</strong>
-
-				<p>
-					Para denunciar basta dar um zoom onde deseja e clicar em um ponto onde
-					a coleta não foi realizada. Após isso basta enviar a sua denuncia
-					clicando no botão abaixo do mapa.
-				</p>
-				<p>
-					Lembre-se que é de extrema importância que a sua denúncia seja válida
-					para que haja uma melhora na coleta!
-				</p>
+				<ComplaintStep>
+					<p>
+						<BsPencilSquare size={32} /> Passo 1
+					</p>
+					<p>Preencha primeiro de forma completa as informações solicitadas.</p>
+				</ComplaintStep>
+				<form>
+					<AnimatedInputText
+						label="Nome completo"
+						value={name}
+						onChange={(e) => setName(e)}
+					/>
+					<AnimatedInputText
+						label="Endereço (Logradouro, número)"
+						value={adress}
+						onChange={(e) => setAdress(e)}
+					/>
+					<AnimatedInputText
+						label="Telefone ou Whatsapp"
+						value={whatsapp}
+						onChange={(e) => setWhatsapp(e)}
+					/>
+					<AnimatedInputText
+						label="Descrição da ocorrência"
+						value={description}
+						onChange={(e) => setDescripion(e)}
+					/>
+				</form>
+				<ComplaintStep>
+					<p>
+						<SiOpenstreetmap size={32} /> Passo 2
+					</p>
+					<p>
+						Dê um zoom no mapa, e marque com um clique o local de sua moradia,
+						que é o ponto da não-coleta e, confirme no botão “Reclamar”.
+					</p>
+				</ComplaintStep>
 				<ComplaintMapContainer>
 					<MapContainer
 						center={[-16.44110683151371, -51.11805438995362]}
@@ -125,7 +176,7 @@ const Complaint: React.FC = () => {
 					isValid={position.longitude !== 0}
 					onClick={handleClickComplaint}
 				>
-					Denunciar
+					Reclamar
 				</ComplaintButton>
 			</ComplaintContentContainer>
 			<Footer />
