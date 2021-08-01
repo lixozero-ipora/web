@@ -1,16 +1,17 @@
 import React from 'react'
+import { MdAccountBalance } from 'react-icons/md'
 
 import {
-	BlurredImage,
+	Image,
 	BlurredImageContainer,
 	ContentContainer,
-	ContentText,
 	Title,
 } from '../../components/Common/styles'
 import NavBar from '../../components/Navbar'
-import ifgoianoImage from '../../assets/images/ifgoiano_ipora.jpg'
+import ifAndCityHall from '../../assets/images/if_and_city_hall.png'
 import Footer from '../../components/Footer'
 import useScrollTop from '../../hooks/useScrollTop'
+import { AboutContent } from './styles'
 
 const About: React.FC = () => {
 	useScrollTop()
@@ -19,50 +20,112 @@ const About: React.FC = () => {
 		<>
 			<NavBar />
 			<BlurredImageContainer>
-				<BlurredImage src={ifgoianoImage} />
+				<Image src={ifAndCityHall} />
 			</BlurredImageContainer>
 			<ContentContainer>
-				<Title>Sobre</Title>
-				<ContentText>
+				<Title>
+					<span>
+						<MdAccountBalance size={60} />
+					</span>
+					Sobre
+				</Title>
+				<AboutContent>
 					<p>
-						A motivação e justificativa do projeto surgiu pela participação de
-						uma audiência pública destinada a discutir o lixo produzido na
-						cidade de Iporá. No vídeo de Viviane Specian intitulado “destino
-						final para o lixo produzido em Iporá-GO: Problemas e Soluções”, a
-						bióloga e vereadora Viviane Specian de Iporá afirma que a cidade
-						carece de iniciativas acadêmicas e voluntárias de educadores e
-						profissionais afins para atingir a conscientização ambiental da
-						população que se inicie no descarte adequado e seletivo.
+						O projeto visa enfrentar a situação atual da não-coleta dos resíduos
+						em alguns bairros pelos coletores e caminhões e otimizar a política
+						urbana em sua cobertura, casa a casa.
 					</p>
 					<p>
-						Participando da audiência pública, o ex-Vereador e ex-Secretário do
-						Meio Ambiente de Catalão/GO, o Geógrafo e Prof. Marcelo Rodrigues
-						Mendonça do Instituto de Estudos Socioambientais do IESA, da
-						Universidade Federal de Goiás-UFG concorda com a fala da Viviane, e
-						ainda, em resposta a perguntas, comenta sobre a criação de
-						tecnologias da informação com foco em RSU, como aplicativos e sites
-						para contribuir, a todo o processo de manejo e gestão. No caso,
-						frisa a importância de aplicações voltadas a informação de datas ou
-						de pontos de coleta para o cidadão.
+						O desenvolvimento do Software que fornece um meio digital para que
+						sejam feitas reclamações a respeito de irregularidades na coleta de
+						RSU da cidade, o que engloba também a disposição das datas para
+						população, assim como, informação do descarte adequado pela
+						orientação municipal.
 					</p>
-					<p>
-						Visando enfrentar a situação atual, o projeto se justifica e deve
-						ser desenvolvido para atender duas frentes de ação:
-					</p>
+					<p>Os colaboradores envolvidos são:</p>
 					<ul>
 						<li>
-							A gestão de Mídias sociais (Instagram e Facebook) que por meio da
-							educação ambiental estimule a própria conscientização dos
-							Iporaenses.
+							Luciana Recart Cardoso -{' '}
+							<span className="magenta">
+								Cientista da Computação e Prof. Me. do Insituto Federal Goiano -
+								Campus Iporá
+							</span>
 						</li>
 						<li>
-							O desenvolvimento do Software que fornece um meio digital para que
-							sejam feitas denúncias a respeito de irregularidades na coleta de
-							RSU da cidade, o que engloba também a disposição das datas para
-							população.
+							Viviane Specian -{' '}
+							<span className="light-blue">
+								Prof. Me, Bióloga e Vereadora da Prefeitura de Iporá
+							</span>
+						</li>
+						<li>
+							Marcelo Rodrigues Mendonça -{' '}
+							<span className="light-blue">
+								Geógrafo e Prof. Dr. do Instituto SocioAmbientais (IESA)
+							</span>
+						</li>
+						<li>
+							Guilherme E. S. Bueno -{' '}
+							<span className="light-blue">
+								Engenheiro Ambiental da Secretaria de Meio Ambiente de Iporá
+							</span>
+						</li>
+						<li>
+							Cleidney Silva -{' '}
+							<span className="light-blue">
+								Gerente da Limpeza Urbana da Secretaria de Obras de Iporá
+							</span>
+						</li>
+						<li>
+							Darlan J. A. da S. Brito -{' '}
+							<span className="light-blue">
+								Gerente dos Recursos Humanos da Secretaria de Obras de Iporá
+							</span>
+						</li>
+						<li>
+							Wayrone Klaiton Luiz Silva -{' '}
+							<span className="green">Documentador e Gestor de qualidade</span>
+						</li>
+						<li>
+							Gustavo Hiroaki Dos Santos Miwa -{' '}
+							<span className="orange">Gerente de projeto</span>
+						</li>
+						<li>
+							Abenaya Kelly Vieira Pires -{' '}
+							<span className="wine">Produtora de Cards e de EAP</span>
+						</li>
+						<li>
+							João Victor Azevedo -{' '}
+							<span className="wine">
+								Produtor de Cards e Gestor das partes interessadas
+							</span>
+						</li>
+						<li>
+							Pablo Almeida de Souza -{' '}
+							<span className="purple">
+								Produtor de enquetes e Gestor de riscos
+							</span>
+						</li>
+						<li>
+							Leonardo Rodrigues Silva -{' '}
+							<span className="purple">
+								Gestor das mídias sociais, Enquetes e Orçamento
+							</span>
+						</li>
+						<li>
+							João Pedro Barros Ferreira -{' '}
+							<span className="water">
+								Gestor do desenvolvimento e Desenvolvedor
+							</span>
+						</li>
+						<li>
+							Thiago César R. da Mata -{' '}
+							<span className="water">Desenvolvedor</span>
+						</li>
+						<li>
+							Higor Koakovsk Pereira - <span className="brown">Designer</span>
 						</li>
 					</ul>
-				</ContentText>
+				</AboutContent>
 			</ContentContainer>
 			<Footer />
 		</>
