@@ -10,11 +10,16 @@ export const MenuLink = styled(Link)`
 	transition: all 0.3s ease-in;
 	font-size: 2rem;
 	font-weight: bold;
+	margin-left: 5px;
 
-	transition: letter-spacing 300ms ease;
+	transition: all 300ms ease;
+	border: 1px solid transparent;
+	border-radius: 10px;
 
 	:hover {
-		letter-spacing: 2px;
+		/* text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); */
+		border: 1px solid white;
+		border-radius: 20px;
 	}
 `
 
@@ -69,7 +74,7 @@ export const Menu = styled.div<{ isOpen: boolean }>`
 	background: var(--color-green);
 	z-index: 1;
 
-	@media (max-width: 768px) {
+	@media (max-width: 992px) {
 		overflow: hidden;
 		flex-direction: column;
 		max-height: ${({ isOpen }) => (isOpen ? '300px' : '0')};

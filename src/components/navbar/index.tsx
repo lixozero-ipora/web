@@ -2,17 +2,19 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Nav, Logo, Hamburger, Menu, MenuLink } from './styles'
 import logo from '../../assets/images/recycling.svg'
+import { useAuth } from '../../store/authContext'
 
 const NavBar: React.FC = () => {
 	const [isOpen, setIsOpen] = useState<boolean>(false)
+	const { isLogedIn } = useAuth()
 	return (
-		<Nav>
+		<Nav data-aos="fade-down">
 			<Link to="/">
 				<Logo>
 					<img src={logo} alt="recilagem" />
 					<div>
 						<h1>LIXO ZERO</h1>
-						<h3>IPORÁ-GO</h3>
+						<h3>Famílias felizes e saudáveis</h3>
 					</div>
 				</Logo>
 			</Link>
@@ -22,16 +24,21 @@ const NavBar: React.FC = () => {
 				<span />
 			</Hamburger>
 			<Menu isOpen={isOpen}>
-				<MenuLink to="/">Página inicial</MenuLink>
-				<MenuLink to="/horarios">Horários</MenuLink>
-				<MenuLink to="/denuncia">Denúncia</MenuLink>
-				{/* <Search>
-					<input type="text" />
-					<button type="submit">
-						<FaSearch style={{ fontSize: 18 }} />
-					</button>
-				</Search>
-				<ButtonCad>CADASTRE</ButtonCad> */}
+				{isLogedIn ? (
+					<>
+						<MenuLink to="/">Página inicial</MenuLink>
+						<MenuLink to="/editar-horarios">Editar horários</MenuLink>
+						<MenuLink to="/visualizar-denuncias">
+							Visualizar reclamações
+						</MenuLink>
+					</>
+				) : (
+					<>
+						<MenuLink to="/">Página inicial</MenuLink>
+						<MenuLink to="/datas">Datas de coleta</MenuLink>
+						<MenuLink to="/denuncia">Reclamar</MenuLink>
+					</>
+				)}
 			</Menu>
 		</Nav>
 	)
