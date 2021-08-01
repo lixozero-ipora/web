@@ -7,10 +7,9 @@ const Footer: React.FC = () => (
 		<FooterText>
 			<p>
 				Projeto desenvolvido pelos acadêmicos do curso de Análise e
-				Desenvolvimento de Sistemas do Instituto Federal Goiano Campus Iporá
-				durante turma da matéria de Gerência de Projetos ministrada pela
-				professora Luciana Recart Cardoso. O projeto foi feito juntamente com a
-				vereadora Viviane Specian, que colaborou como stakeholder.
+				Desenvolvimento de Sistemas do Instituto Federal Goiano - Campus Iporá
+				em parceria com Prefeitura de Iporá, sob a supervisão da Prof. Me.
+				Luciana Recart Cardoso
 			</p>
 			<p>
 				Este é um projeto de código fonte aberto, para visualizar ou até mesmo
