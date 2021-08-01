@@ -6,7 +6,6 @@ import AnimatedInputText from '../../components/AnimatedInputText'
 import {
 	ButtonOutline,
 	CardWithBrandThreeTexts,
-	ContentContainer as ScheduleContainer,
 	ContentText,
 	Title,
 } from '../../components/Common/styles'
