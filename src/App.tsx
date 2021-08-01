@@ -1,16 +1,27 @@
 import React from 'react'
 import { HashRouter } from 'react-router-dom'
+import 'leaflet/dist/leaflet.css'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import StyleGlobal from './styles/global'
 import Routes from './routes'
-import 'leaflet/dist/leaflet.css'
+import { AuthProvider } from './store/authContext'
+
+AOS.init({
+	once: true,
+	delay: 150,
+	duration: 700,
+	easing: 'ease',
+})
 
 const App: React.FC = () => (
-	<HashRouter basename={process.env.PUBLIC_URL}>
-		<Routes />
-		<StyleGlobal />
-	</HashRouter>
+	<AuthProvider>
+		<HashRouter>
+			<Routes />
+			<StyleGlobal />
+		</HashRouter>
+	</AuthProvider>
 )
 
 export default App
