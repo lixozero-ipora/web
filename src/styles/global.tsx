@@ -4,10 +4,15 @@ export default createGlobalStyle`
   :root {
     font-size: 62.5%;
 
-    --color-red: #ef233c;
-    --color-green: #28a443;
+    --color-red: #CC2936;
+    --color-green: #00a85a;
     --color-text-dark: #4f4e4e;
+    --color-gray-dark: #9e9e9e;
     --color-blue-light: #73D5FF;
+    --color-blue-opaque: #1682af;
+    --color-blue-dark: #3E4095;
+    --color-blue-darker: #171738;
+
   }
 
   *{
@@ -16,6 +21,7 @@ export default createGlobalStyle`
     outline: 0;
     box-sizing: border-box;
   }
+
   body{
     font-size: 1.6rem;
     background: #ebebeb;
@@ -35,8 +41,19 @@ export default createGlobalStyle`
     text-decoration: none;
   }
 
+  p {
+    text-align: justify;
+  }
+
+  @media(max-width: 552px) {
+    :root {
+      font-size: 55%;
+    }
+  }
+
   html, body, #root{
     min-height: 100%;
+    overflow-x: hidden;
   }
 
   ::-webkit-scrollbar {
@@ -48,7 +65,7 @@ export default createGlobalStyle`
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #166026;
+    background: var(--color-green);
     border-radius: 5px;
   }
 `
