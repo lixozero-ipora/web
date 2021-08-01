@@ -1,7 +1,7 @@
 import React from 'react'
-import { Popup } from 'react-leaflet'
+import { Marker, Popup } from 'react-leaflet'
 
-import mapIconSVG from '../../assets/images/trash-alt-solid.svg'
+import mapIcon from '../../utils/mapIcon'
 import { MapButton } from './styles'
 
 interface ComplaintPopupProps {
@@ -22,17 +22,17 @@ const ComplaintPopup: React.FC<ComplaintPopupProps> = ({
 	}
 
 	return (
-		<Popup
-			position={[latitude, longitude]}
-			closeButton={false}
-			closeOnClick={false}
-			minWidth={30}
-			maxWidth={30}
-		>
-			<MapButton type="button" onClick={handleClick}>
-				<img src={mapIconSVG} alt="Lixeira" />
-			</MapButton>
-		</Popup>
+		<Marker icon={mapIcon} position={[latitude, longitude]}>
+			<Popup
+				position={[latitude, longitude]}
+				closeButton={false}
+				closeOnClick={false}
+			>
+				<MapButton type="button" onClick={handleClick}>
+					Abrir reclamações
+				</MapButton>
+			</Popup>
+		</Marker>
 	)
 }
 
