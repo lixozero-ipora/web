@@ -1,8 +1,10 @@
 import React from 'react'
+import AOS from 'aos'
+import { ToastContainer } from 'react-toastify'
 import { HashRouter } from 'react-router-dom'
 import 'leaflet/dist/leaflet.css'
-import AOS from 'aos'
 import 'aos/dist/aos.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 import StyleGlobal from './styles/global'
 import Routes from './routes'
@@ -21,6 +23,7 @@ const App: React.FC = () => (
 			<Routes />
 			<StyleGlobal />
 		</HashRouter>
+		<ToastContainer />
 	</AuthProvider>
 )
 
