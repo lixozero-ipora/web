@@ -166,7 +166,7 @@ const Complaint: React.FC = () => {
 					<AnimatedInputText
 						label="Telefone com DDD"
 						value={whatsapp}
-						onChange={(e) => setWhatsapp(e)}
+						onChange={(e) => setWhatsapp(e.replace(/\D+/gi, ''))}
 					/>
 					<AnimatedInputText
 						label="Descrição da ocorrência"
