@@ -24,7 +24,7 @@ const NavBar: React.FC = () => {
 					<>
 						<MenuLink to="/">Página inicial</MenuLink>
 						<MenuLink to="/editar-horarios">Editar horários</MenuLink>
-						<MenuLink to="/visualizar-denuncias">
+						<MenuLink to="/visualizar-reclamacoes">
 							Visualizar reclamações
 						</MenuLink>
 					</>
