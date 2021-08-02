@@ -89,6 +89,7 @@ export const Hamburger = styled.div`
 	display: none;
 	flex-direction: column;
 	cursor: pointer;
+	z-index: 2;
 
 	span {
 		height: 2px;
@@ -98,7 +99,7 @@ export const Hamburger = styled.div`
 		border-radius: 5px;
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 992px) {
 		display: flex;
 	}
 `
