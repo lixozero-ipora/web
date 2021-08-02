@@ -6,6 +6,8 @@ import { BsPencilSquare } from 'react-icons/bs'
 import { SiOpenstreetmap } from 'react-icons/si'
 import swal from 'sweetalert'
 import { MdHearing } from 'react-icons/md'
+import * as yup from 'yup'
+import { toast } from 'react-toastify'
 
 import NavBar from '../../components/Navbar'
 import {
@@ -26,6 +28,8 @@ import LocationMarker from '../../components/LocationMarker'
 import useScrollTop from '../../hooks/useScrollTop'
 import Footer from '../../components/Footer'
 import AnimatedInputText from '../../components/AnimatedInputText'
+import alreadyComplainedCheck from '../../utils/alreadyComplainedCheck'
+import api from '../../services/api'
 
 const Complaint: React.FC = () => {
 	useScrollTop()
@@ -36,26 +40,10 @@ const Complaint: React.FC = () => {
 	const [whatsapp, setWhatsapp] = useState('')
 	const [description, setDescripion] = useState('')
 
-	const handleClickComplaint = () => {
-		const complainedKey = localStorage.getItem('@complained')
-		if (complainedKey) {
-			const complained = JSON.parse(complainedKey)
+	const handleClickComplaint = async () => {
+		alreadyComplainedCheck()
 
-			const complainedDate = new Date(complained.date)
-			// Day that the person complained + 3 days
-			if (complainedDate.getTime() + 60 * 3600 * 72 > Date.now()) {
-				swal(
-					'Parece que você já reclamou',
-					'Tente novamente após três dias da última reclamação.',
-					'error'
-				).then(() => {
-					push('/')
-				})
-				return
-			}
-		}
-
-		if (!position.latitude) {
+		if (position.longitude === 0 || position.latitude === 0) {
 			swal(
 				'Localização necessária',
 				'Você precisa selecionar um local no mapa para a reclamação.',
@@ -64,14 +52,57 @@ const Complaint: React.FC = () => {
 			return
 		}
 
-		localStorage.setItem('@complained', JSON.stringify({ date: Date.now() }))
-		swal(
-			'Reclamação registrada',
-			'Muito obrigado! A sua reclamação foi registrada.',
-			'success'
-		).then(() => {
-			push('/')
+		const schema = yup.object().shape({
+			name: yup.string().required('O campo nome é obrigatório!'),
+			adress: yup.string().required('O campo endereço é obrigatório!'),
+			whatsapp: yup
+				.string()
+				.min(8, 'O seu número deve ter pelo menos 8 caracteres')
+				.max(15, 'O seu número deve ter no máximo 15 caracteres')
+				.required('O campo telefone é obrigatório!'),
+			description: yup.string().required('O campo descrição é obrigatória!'),
 		})
+
+		const complaintInfo = {
+			name,
+			adress,
+			whatsapp,
+			description,
+			latitude: position.latitude,
+			longitude: position.longitude,
+		}
+
+		try {
+			await schema.validate(complaintInfo, { abortEarly: false })
+		} catch (error) {
+			error.errors.map((msg: string) => toast.error(msg, { autoClose: 10000 }))
+			return
+		}
+
+		try {
+			swal(
+				'Adicionando reclamação',
+				'Aguarde um pouco enquanto nossos robos registram essa reclamação para você!',
+				'info'
+			)
+
+			await api.post('/complaints', complaintInfo)
+
+			localStorage.setItem('@complained', JSON.stringify({ date: Date.now() }))
+			await swal(
+				'Reclamação registrada',
+				'Muito obrigado! A sua reclamação foi registrada.',
+				'success'
+			)
+		} catch (error) {
+			await swal(
+				'Aconteceu um problema',
+				'Nossas máquinas estão enfrentando alguns problemas, tente registrar esta reclamação mais tarde',
+				'error'
+			)
+		} finally {
+			push('/')
+		}
 	}
 
 	const handleMapClick = (event: LeafletMouseEvent) => {
@@ -133,7 +164,7 @@ const Complaint: React.FC = () => {
 						onChange={(e) => setAdress(e)}
 					/>
 					<AnimatedInputText
-						label="Telefone ou Whatsapp"
+						label="Telefone com DDD"
 						value={whatsapp}
 						onChange={(e) => setWhatsapp(e)}
 					/>
@@ -173,10 +204,11 @@ const Complaint: React.FC = () => {
 					</MapContainer>
 				</ComplaintMapContainer>
 				<ComplaintButton
+					disabled={position.longitude === 0 && position.latitude === 0}
 					isValid={position.longitude !== 0}
 					onClick={handleClickComplaint}
 				>
-					Reclamar
+					Adicionar Reclamação
 				</ComplaintButton>
 			</ComplaintContentContainer>
 			<Footer />
