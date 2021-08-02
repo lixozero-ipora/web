@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { MdDateRange } from 'react-icons/md'
 
 import {
-	AuthorInfo,
 	Image,
 	BlurredImageContainer,
 	ContentContainer,

@@ -5,7 +5,7 @@ export const LadingContainer = styled.div``
 export const ImageContainer = styled.div`
 	display: flex;
 	justify-content: center;
-	margin-top: 20px;
+	margin-top: -10px;
 `
 
 export const LandingImage = styled.img`
