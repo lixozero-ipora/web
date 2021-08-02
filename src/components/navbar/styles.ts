@@ -39,30 +39,9 @@ export const Logo = styled.div`
 	flex-direction: row;
 	align-items: center;
 
-	div {
-		align-items: flex-start;
-		justify-content: center;
-		height: 90px;
-		display: flex;
-		flex-direction: column;
-		h1 {
-			font-weight: bold;
-			font-size: 2.3rem;
-			color: #fff;
-		}
-
-		h3 {
-			font-weight: 300;
-			font-size: 1.6rem;
-			color: #fff;
-		}
-	}
-
 	img {
-		width: 45px;
-		height: 45px;
+		height: 90px;
 		margin-right: 10px;
-		filter: grayscale(100%) invert(100%);
 	}
 `
 

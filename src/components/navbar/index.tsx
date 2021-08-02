@@ -12,10 +12,6 @@ const NavBar: React.FC = () => {
 			<Link to="/">
 				<Logo>
 					<img src={logo} alt="recilagem" />
-					<div>
-						<h1>LIXO ZERO</h1>
-						<h3>Famílias felizes e saudáveis</h3>
-					</div>
 				</Logo>
 			</Link>
 			<Hamburger onClick={() => setIsOpen(!isOpen)}>
