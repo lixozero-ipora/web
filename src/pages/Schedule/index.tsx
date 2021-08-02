@@ -66,9 +66,11 @@ const Schedule: React.FC = () => {
 						<li>
 							Os coletores recolhem os lixos nas portas das casas, coloca-os em
 							local estratégico e transfere para caminhões coletores, visando
-							agilidade e menor tempo na rota da coleta, de casa em casa. Fique
-							atento sobre a coleta em seu bairro e, caso seu lixo não seja
-							recolhido na porta de sua casa,{' '}
+							agilidade e menor tempo na rota da coleta, de casa em casa.
+						</li>
+						<li>
+							Fique atento sobre a coleta em seu bairro e, caso seu lixo não
+							seja recolhido na porta de sua casa,{' '}
 							<Link to="/denuncia">reclame aqui</Link>.
 						</li>
 					</ul>
