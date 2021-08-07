@@ -99,7 +99,7 @@ const ComplaintsView: React.FC = () => {
 							Selecione uma reclamação, para visualizar suas informações.
 						</ComplaintMessage>
 					) : (
-						<ComplaintMessage>Reclamação selecioanada abaixo.</ComplaintMessage>
+						<ComplaintMessage>Reclamação selecionada abaixo.</ComplaintMessage>
 					)}
 					{complaints.showing.id && (
 						<ComplaintInfo>
@@ -120,7 +120,7 @@ const ComplaintsView: React.FC = () => {
 								<strong>{complaints.showing.occurrences}</strong> vez(es) em um
 								raio de 30 metros.
 							</span>
-							<strong>Pessoas que reclamaram:</strong>
+							<strong>Registro das reclamações:</strong>
 							{complaints.showing.citizens.map((citizen) => (
 								<CitizenInfo>
 									<span className="info">
