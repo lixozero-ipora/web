@@ -1,8 +1,11 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { MdAccountBalance, MdDateRange, MdHearing } from 'react-icons/md'
+import Slider from 'react-slick'
 
-import logoSVG from '../../assets/images/logo.svg'
+import carouselImageOne from '../../assets/images/carousel_1.svg'
+import carouselImageTwo from '../../assets/images/carousel_2.svg'
+import carouselImageThree from '../../assets/images/carousel_3.png'
 import scheduleDateSVG from '../../assets/images/schedule_date.svg'
 import complainSVG from '../../assets/images/complaint.svg'
 import ifGoianoAndCityMallSVG from '../../assets/images/if_and_city_hall.png'
@@ -14,9 +17,16 @@ import {
 	LandingImage,
 	ContentContainer,
 	LadingContainer,
+	SliderContainer,
 } from './styles'
 import Footer from '../../components/Footer'
 import useScrollTop from '../../hooks/useScrollTop'
+
+const imagesArr = [
+	{ path: carouselImageOne },
+	{ path: carouselImageTwo },
+	{ path: carouselImageThree, whiteBg: true },
+]
 
 const Landing: React.FC = () => {
 	useScrollTop()
@@ -37,13 +47,23 @@ const Landing: React.FC = () => {
 		<>
 			<NavBar />
 			<LadingContainer>
-				<ImageContainer
-					data-aos="fade-in"
-					data-aos-delay="100"
-					data-aos-duration="1500"
-				>
-					<LandingImage src={logoSVG} alt="Lixo zero Iporá" />
-				</ImageContainer>
+				<SliderContainer>
+					<Slider
+						autoplay
+						autoplaySpeed={9000}
+						dots
+						infinite
+						speed={500}
+						slidesToShow={1}
+						slidesToScroll={1}
+					>
+						{imagesArr.map((imgData) => (
+							<ImageContainer key={imgData.path} whiteBg={!!imgData.whiteBg}>
+								<LandingImage src={imgData.path} alt="Lixo zero Iporá" />
+							</ImageContainer>
+						))}
+					</Slider>
+				</SliderContainer>
 				<ContentContainer>
 					<Post
 						preventAnimation
