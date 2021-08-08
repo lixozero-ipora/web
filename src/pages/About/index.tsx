@@ -42,6 +42,30 @@ const About: React.FC = () => {
 						população, assim como, informação do descarte adequado pela
 						orientação municipal.
 					</p>
+					<p>Os desenvolvedores da aplicação:</p>
+					<ul>
+						<li>
+							João Pedro Barros Ferreira -{' '}
+							<span className="purple">
+								Gestor do desenvolvimento e Desenvolvedor Web (Front-End e
+								Back-End).
+							</span>
+						</li>
+						<li>
+							Wayrone Klaiton Luiz Silva -{' '}
+							<span className="purple">
+								Geógrafo, Documentador, Gestor de qualidade, Web Designer e
+								Requisitos.
+							</span>
+						</li>
+						<li>
+							Thiago César R. da Mata -{' '}
+							<span className="purple">
+								Thiago César R. da Mata – Desenvolvedor Web (Front-End).
+							</span>
+						</li>
+					</ul>
+
 					<p>Os colaboradores envolvidos são:</p>
 					<ul>
 						<li>
@@ -82,10 +106,6 @@ const About: React.FC = () => {
 							</span>
 						</li>
 						<li>
-							Wayrone Klaiton Luiz Silva -{' '}
-							<span className="green">Documentador e Gestor de qualidade</span>
-						</li>
-						<li>
 							Gustavo Hiroaki Dos Santos Miwa -{' '}
 							<span className="orange">Gerente de projeto</span>
 						</li>
@@ -101,25 +121,15 @@ const About: React.FC = () => {
 						</li>
 						<li>
 							Pablo Almeida de Souza -{' '}
-							<span className="purple">
+							<span className="water">
 								Produtor de enquetes e Gestor de riscos
 							</span>
 						</li>
 						<li>
 							Leonardo Rodrigues Silva -{' '}
-							<span className="purple">
+							<span className="water">
 								Gestor das mídias sociais, Enquetes e Orçamento
 							</span>
-						</li>
-						<li>
-							João Pedro Barros Ferreira -{' '}
-							<span className="water">
-								Gestor do desenvolvimento e Desenvolvedor
-							</span>
-						</li>
-						<li>
-							Thiago César R. da Mata -{' '}
-							<span className="water">Desenvolvedor</span>
 						</li>
 						<li>
 							Higor Koakovsk Pereira - <span className="brown">Designer</span>

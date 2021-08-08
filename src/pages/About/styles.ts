@@ -36,7 +36,7 @@ export const AboutContent = styled(ContentText)`
 		color: white;
 	}
 	.water {
-		background-color: #2e6e89;
+		background-color: #4a9ec2;
 		color: white;
 	}
 	.brown {
