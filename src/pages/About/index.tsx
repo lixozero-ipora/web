@@ -60,9 +60,7 @@ const About: React.FC = () => {
 						</li>
 						<li>
 							Thiago César R. da Mata -{' '}
-							<span className="purple">
-								Thiago César R. da Mata – Desenvolvedor Web (Front-End).
-							</span>
+							<span className="purple">Desenvolvedor Web (Front-End).</span>
 						</li>
 					</ul>
 
