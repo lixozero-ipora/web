@@ -4,7 +4,7 @@ import api from '../services/api'
 
 interface AuthContext {
 	isLogedIn: boolean
-	handleLogin(user: string, password: string): void
+	handleLogin(user: string, password: string, callback: () => void): void
 	handleLogout(): void
 }
 
@@ -43,7 +43,11 @@ export const AuthProvider: React.FC = ({ children }) => {
 		return false
 	})
 
-	const handleLogin = async (user: string, password: string) => {
+	const handleLogin = async (
+		user: string,
+		password: string,
+		callback?: () => void
+	) => {
 		try {
 			const response = await api.post('/session', { user, password })
 
@@ -56,6 +60,10 @@ export const AuthProvider: React.FC = ({ children }) => {
 				'Houveu um erro no login, talvez suas credenciais estejam erradas',
 				'error'
 			)
+		} finally {
+			if (callback) {
+				callback()
+			}
 		}
 	}
 	const handleLogout = () => {
