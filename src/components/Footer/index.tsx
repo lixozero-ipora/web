@@ -24,7 +24,7 @@ const Footer: React.FC = () => (
 				.
 			</p>
 			<p>
-				Todos os ícones utilizados não foram modificados.{' '}
+				Todos os ícones utilizados não foram modificados{' '}
 				<a
 					href="https://fontawesome.com/license"
 					target="_blank"
@@ -32,6 +32,15 @@ const Footer: React.FC = () => (
 				>
 					Icones utilizados
 				</a>
+				.
+			</p>
+			<p>
+				Algumas ilustrações utilizadas foram baseadas, ou são, do projeto
+				Open-Source{' '}
+				<a href="https://undraw.co/" target="_blank" rel="noopener noreferrer">
+					Undraw
+				</a>
+				.
 			</p>
 		</FooterText>
 		<BottomMessage>
