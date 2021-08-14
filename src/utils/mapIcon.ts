@@ -1,12 +1,20 @@
 import Leaflet from 'leaflet'
 
-import mapIconSvg from '../assets/images/trash-alt-solid.svg'
+import redMapIconSvg from '../assets/images/trash-alt-solid-red.svg'
+import greenMapIconSvg from '../assets/images/trash-alt-solid-green.svg'
 
-const mapIcon = Leaflet.icon({
-	iconUrl: mapIconSvg,
+const mapIconRed = Leaflet.icon({
+	iconUrl: redMapIconSvg,
 	iconAnchor: [10, 29],
 	iconSize: [20, 20],
 	popupAnchor: [0, -27],
 })
 
-export default mapIcon
+const mapIconGreen = Leaflet.icon({
+	iconUrl: greenMapIconSvg,
+	iconAnchor: [10, 29],
+	iconSize: [20, 20],
+	popupAnchor: [0, -27],
+})
+
+export default { red: mapIconRed, green: mapIconGreen }

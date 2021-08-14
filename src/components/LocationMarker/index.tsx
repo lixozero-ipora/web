@@ -21,7 +21,7 @@ const LocationMarker: React.FC<LocationMarkerProps> = ({
 	return (
 		<Marker
 			interactive={false}
-			icon={mapIcon}
+			icon={mapIcon.red}
 			position={[latitude, longitude]}
 		/>
 	)

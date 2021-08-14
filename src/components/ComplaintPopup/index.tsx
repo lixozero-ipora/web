@@ -8,6 +8,7 @@ interface ComplaintPopupProps {
 	id: string
 	latitude: number
 	longitude: number
+	mapIconColor?: 'red' | 'green'
 	onClick: (id: string) => void
 }
 
@@ -15,6 +16,7 @@ const ComplaintPopup: React.FC<ComplaintPopupProps> = ({
 	latitude,
 	longitude,
 	id,
+	mapIconColor = 'red',
 	onClick,
 }) => {
 	const handleClick = () => {
@@ -22,7 +24,7 @@ const ComplaintPopup: React.FC<ComplaintPopupProps> = ({
 	}
 
 	return (
-		<Marker icon={mapIcon} position={[latitude, longitude]}>
+		<Marker icon={mapIcon[mapIconColor]} position={[latitude, longitude]}>
 			<Popup
 				position={[latitude, longitude]}
 				closeButton={false}
