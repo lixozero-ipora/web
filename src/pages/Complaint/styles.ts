@@ -5,6 +5,10 @@ interface ComplaintButtonProps {
 	isValid?: boolean
 }
 
+interface ToBlurProps {
+	isBlurred: boolean
+}
+
 export const ComplaintStep = styled(CardWithBrandThreeTexts)``
 
 export const ComplaintMapContainer = styled.div`
@@ -20,6 +24,7 @@ export const ComplaintMapContainer = styled.div`
 export const ComplaintContentContainer = styled.div`
 	width: 70%;
 	margin: 30px auto;
+	position: relative;
 
 	background-color: #fff;
 	border-radius: 10px;
@@ -48,6 +53,42 @@ export const ComplaintContentContainer = styled.div`
 			width: 100%;
 		}
 	}
+`
+
+export const LoadingBoxContainer = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	margin: 0 auto;
+
+	z-index: 1001;
+
+	> .box {
+		width: 80%;
+		background-color: white;
+		border-radius: 10px;
+	}
+`
+
+export const ToBlur = styled.div<ToBlurProps>`
+	transition: all ease 500ms;
+	${(props) => {
+		if (props.isBlurred) {
+			return css`
+				filter: blur(9px);
+				pointer-events: none;
+			`
+		}
+
+		return css``
+	}}
 `
 
 export const ComplaintButton = styled.button<ComplaintButtonProps>`

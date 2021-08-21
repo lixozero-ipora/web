@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { MapContainer, TileLayer } from 'react-leaflet'
-import { LeafletMouseEvent } from 'leaflet'
+import { LeafletMouseEvent, LocationEvent, Map } from 'leaflet'
 import { BsPencilSquare } from 'react-icons/bs'
 import { SiOpenstreetmap } from 'react-icons/si'
 import swal from 'sweetalert'
@@ -15,6 +15,8 @@ import {
 	ComplaintContentContainer,
 	ComplaintMapContainer,
 	ComplaintStep,
+	LoadingBoxContainer,
+	ToBlur,
 } from './styles'
 import {
 	BlurredImageContainer,
@@ -30,18 +32,22 @@ import Footer from '../../components/Footer'
 import AnimatedInputText from '../../components/AnimatedInputText'
 import alreadyComplainedCheck from '../../utils/alreadyComplainedCheck'
 import api from '../../services/api'
+import Loading from '../../components/Loading'
 
 const Complaint: React.FC = () => {
 	useScrollTop()
 	const { push } = useHistory()
 	const [position, setPosition] = useState({ latitude: 0, longitude: 0 })
+	const [loading, setLoading] = useState(false)
 	const [name, setName] = useState('')
 	const [adress, setAdress] = useState('')
 	const [whatsapp, setWhatsapp] = useState('')
 	const [description, setDescripion] = useState('')
 
 	const handleClickComplaint = async () => {
-		alreadyComplainedCheck()
+		if (await alreadyComplainedCheck()) {
+			return
+		}
 
 		if (position.longitude === 0 || position.latitude === 0) {
 			swal(
@@ -80,18 +86,17 @@ const Complaint: React.FC = () => {
 		}
 
 		try {
-			swal(
-				'Adicionando reclamação',
-				'Aguarde um pouco enquanto nossos robos registram essa reclamação para você!',
-				'info'
-			)
+			if (loading) {
+				return
+			}
+			setLoading(true)
 
 			await api.post('/complaints', complaintInfo)
 
 			localStorage.setItem('@complained', JSON.stringify({ date: Date.now() }))
 			await swal(
 				'Reclamação registrada',
-				'Muito obrigado! A sua reclamação foi registrada.',
+				'A sua reclamação já está registrada em nosso sistema, em breve ela será visualizada e resolvida. Muito obrigado!',
 				'success'
 			)
 		} catch (error) {
@@ -101,6 +106,7 @@ const Complaint: React.FC = () => {
 				'error'
 			)
 		} finally {
+			setLoading(false)
 			push('/')
 		}
 	}
@@ -110,6 +116,15 @@ const Complaint: React.FC = () => {
 			latitude: event.latlng.lat,
 			longitude: event.latlng.lng,
 		})
+	}
+
+	const handleLocationFound = (event: LocationEvent) => {
+		swal(
+			'Localização encontrada!',
+			'Lembre-se que a localização nem sempre é tão precisa. Então verifique se a localização da lixeira em laranja é a mesma que a do seu endereço',
+			'success'
+		)
+		setPosition({ latitude: event.latlng.lat, longitude: event.latlng.lng })
 	}
 
 	return (
@@ -146,70 +161,82 @@ const Complaint: React.FC = () => {
 				</ContentText>
 			</ContentContainer>
 			<ComplaintContentContainer>
-				<ComplaintStep>
-					<p>
-						<BsPencilSquare size={32} /> Passo 1
-					</p>
-					<p>Preencha primeiro de forma completa as informações solicitadas.</p>
-				</ComplaintStep>
-				<form>
-					<AnimatedInputText
-						label="Nome completo"
-						value={name}
-						onChange={(e) => setName(e)}
-					/>
-					<AnimatedInputText
-						label="Endereço (Logradouro, número)"
-						value={adress}
-						onChange={(e) => setAdress(e)}
-					/>
-					<AnimatedInputText
-						label="Telefone com DDD"
-						value={whatsapp}
-						onChange={(e) => setWhatsapp(e.replace(/\D+/gi, ''))}
-					/>
-					<AnimatedInputText
-						label="Descrição da ocorrência"
-						value={description}
-						onChange={(e) => setDescripion(e)}
-					/>
-				</form>
-				<ComplaintStep>
-					<p>
-						<SiOpenstreetmap size={32} /> Passo 2
-					</p>
-					<p>
-						Dê um zoom no mapa, e marque com um clique o local de sua moradia,
-						que é o ponto da não-coleta e, confirme no botão “Reclamar”.
-					</p>
-				</ComplaintStep>
-				<ComplaintMapContainer>
-					<MapContainer
-						center={[-16.44110683151371, -51.11805438995362]}
-						style={{ width: '100%', height: 400 }}
-						zoom={15}
-						minZoom={15}
-						scrollWheelZoom
-					>
-						<TileLayer
-							attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-							url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+				{loading && (
+					<LoadingBoxContainer>
+						<div className="box">
+							<Loading message="Enviando sua reclamação" size="large" />
+						</div>
+					</LoadingBoxContainer>
+				)}
+				<ToBlur isBlurred={loading}>
+					<ComplaintStep>
+						<p>
+							<BsPencilSquare size={32} /> Passo 1
+						</p>
+						<p>
+							Preencha primeiro de forma completa as informações solicitadas.
+						</p>
+					</ComplaintStep>
+					<form>
+						<AnimatedInputText
+							label="Nome completo"
+							value={name}
+							onChange={setName}
 						/>
+						<AnimatedInputText
+							label="Endereço (Logradouro, número)"
+							value={adress}
+							onChange={(e) => setAdress(e)}
+						/>
+						<AnimatedInputText
+							label="Telefone com DDD"
+							value={whatsapp}
+							onChange={(e) => setWhatsapp(e.replace(/\D+/gi, ''))}
+						/>
+						<AnimatedInputText
+							label="Descrição da ocorrência"
+							value={description}
+							onChange={setDescripion}
+						/>
+					</form>
+					<ComplaintStep>
+						<p>
+							<SiOpenstreetmap size={32} /> Passo 2
+						</p>
+						<p>
+							Dê um zoom no mapa, e marque com um clique o local de sua moradia,
+							que é o ponto da não-coleta e, confirme no botão “Reclamar”.
+						</p>
+					</ComplaintStep>
+					<ComplaintMapContainer>
+						<MapContainer
+							center={[-16.44110683151371, -51.11805438995362]}
+							style={{ width: '100%', height: 400 }}
+							zoom={15}
+							minZoom={15}
+							scrollWheelZoom
+						>
+							<TileLayer
+								attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+								url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+							/>
 
-						<LocationMarker
-							latitude={position.latitude}
-							longitude={position.longitude}
-							onMapClick={handleMapClick}
-						/>
-					</MapContainer>
-				</ComplaintMapContainer>
-				<ComplaintButton
-					disabled={position.longitude === 0 && position.latitude === 0}
-					isValid={position.longitude !== 0}
-					onClick={handleClickComplaint}
-				>
-					Adicionar Reclamação
-				</ComplaintButton>
+							<LocationMarker
+								latitude={position.latitude}
+								longitude={position.longitude}
+								onMapClick={handleMapClick}
+								onLocationFound={handleLocationFound}
+							/>
+						</MapContainer>
+					</ComplaintMapContainer>
+					<ComplaintButton
+						disabled={position.longitude === 0 && position.latitude === 0}
+						isValid={position.longitude !== 0}
+						onClick={handleClickComplaint}
+					>
+						Adicionar Reclamação
+					</ComplaintButton>
+				</ToBlur>
 			</ComplaintContentContainer>
 			<Footer />
 		</>
