@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { MapContainer, TileLayer } from 'react-leaflet'
 import swal from 'sweetalert'
 import { Complaint } from '../../@types'
+import CitizenInfo from '../../components/CitizenInfo'
+import { ButtonOutline } from '../../components/Common/styles'
 import ComplaintPopup from '../../components/ComplaintPopup'
 import Loading from '../../components/Loading'
 import NavBar from '../../components/Navbar'
 import api from '../../services/api'
 import {
-	CitizenInfo,
 	ComplaintInfo,
 	ComplaintMessage,
 	ComplaintsBoxContainer,
@@ -26,6 +27,7 @@ const ComplaintsView: React.FC = () => {
 		items: [],
 	})
 	const [isLoading, setIsLoading] = useState(true)
+	const [showSolved, setShowSolved] = useState(false)
 
 	useEffect(() => {
 		getComplaints()
@@ -59,6 +61,48 @@ const ComplaintsView: React.FC = () => {
 		}))
 	}
 
+	const handleShowSolved = () => {
+		setShowSolved((prevState) => !prevState)
+	}
+
+	const handleSolveComplaint = async (
+		index: number,
+		whatsapp: string,
+		unsolve?: boolean
+	) => {
+		swal('Alterando a reclamação...', '', 'info')
+		try {
+			const newComplaint = await api.put(
+				`/complaints/${complaints.showing.id}/${unsolve ? 'unsolve' : ''}`,
+				{
+					solvedIndex: index,
+					whatsapp,
+				}
+			)
+
+			if (
+				newComplaint.data.has_active_complaints !==
+				complaints.showing.has_active_complaints
+			) {
+				getComplaints()
+			}
+
+			setComplaints((prevState) => {
+				return {
+					...prevState,
+					showing: newComplaint.data,
+				}
+			})
+			swal('Reclamação alterada!', '', 'success')
+		} catch (error) {
+			swal(
+				'Erro ao resolver reclamação',
+				'Nossas máquinas no momento não conseguiram resolver essa reclamação, tente mais tarde.',
+				'error'
+			)
+		}
+	}
+
 	return (
 		<>
 			<NavBar />
@@ -72,38 +116,48 @@ const ComplaintsView: React.FC = () => {
 					<MapContainer
 						center={[-16.4365129, -51.112477]}
 						style={{ width: '100%', height: '100%' }}
-						zoom={14}
-						minZoom={15}
+						zoom={13}
+						minZoom={14}
 						scrollWheelZoom
 					>
 						<TileLayer
 							attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 							url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 						/>
-						{complaints.items.map((complaint) => {
-							return (
-								<ComplaintPopup
-									key={complaint.id}
-									id={complaint.id}
-									latitude={complaint.latitude}
-									longitude={complaint.longitude}
-									onClick={handleChangeComplaintShowing}
-								/>
+						{complaints.items
+							.filter(
+								(complaint) => complaint.has_active_complaints || showSolved
 							)
-						})}
+							.map((complaint) => {
+								return (
+									<ComplaintPopup
+										key={complaint.id}
+										id={complaint.id}
+										latitude={complaint.latitude}
+										longitude={complaint.longitude}
+										mapIconColor={
+											complaint.has_active_complaints ? 'red' : 'green'
+										}
+										onClick={handleChangeComplaintShowing}
+									/>
+								)
+							})}
 					</MapContainer>
 				</MapBoxContainer>
 				<ComplaintsBoxContainer data-aos="fade-left">
-					{!complaints.showing.id ? (
+					<ButtonOutline onClick={handleShowSolved}>
+						{showSolved
+							? 'Esconder reclamações resolvidas'
+							: 'Mostrar reclamações resolvidas'}
+					</ButtonOutline>
+					{!complaints.showing.id && (
 						<ComplaintMessage>
 							Selecione uma reclamação, para visualizar suas informações.
 						</ComplaintMessage>
-					) : (
-						<ComplaintMessage>Reclamação selecionada abaixo.</ComplaintMessage>
 					)}
 					{complaints.showing.id && (
 						<ComplaintInfo>
-							<span className="info">
+							<span className="card">
 								<strong>Localização</strong>: Você pode visualizar a localização
 								no Maps{' '}
 								<a
@@ -115,28 +169,53 @@ const ComplaintsView: React.FC = () => {
 								</a>
 								.
 							</span>
-							<span className="info">
-								<strong>Ocorrências</strong>: Esta reclamação já aconteceu{' '}
-								<strong>{complaints.showing.occurrences}</strong> vez(es) em um
-								raio de 30 metros.
+							<span className="card">
+								<strong>Ocorrências</strong>: Em um raio de 30 metros,{' '}
+								<strong>{complaints.showing.occurrences}</strong>
+								{complaints.showing.occurrences > 1
+									? ' pessoas reclamaram'
+									: ' pessoa reclamou'}{' '}
+								neste ponto de não coleta.
 							</span>
-							<strong>Registro das reclamações:</strong>
-							{complaints.showing.citizens.map((citizen) => (
-								<CitizenInfo>
-									<span className="info">
-										<strong>Nome</strong>: {citizen.name}
-									</span>
-									<span className="info">
-										<strong>Endereço</strong>: {citizen.adress}
-									</span>
-									<span className="info">
-										<strong>Whatsapp</strong>: {citizen.whatsapp}
-									</span>
-									<span className="info">
-										<strong>Descrição da ocorrência</strong>:{' '}
-										{citizen.description}
-									</span>
-								</CitizenInfo>
+							<strong className="red">Reclamações ativas:</strong>
+							{!complaints.showing.active.length && (
+								<span className="card">Nenhuma reclamação ativa</span>
+							)}
+							{complaints.showing.active.map((citizen, index) => (
+								<CitizenInfo
+									index={index}
+									color="var(--color-orange)"
+									name={citizen.name}
+									adress={citizen.adress}
+									whatsapp={citizen.whatsapp}
+									description={citizen.description}
+									created_at={citizen.created_at}
+									showButton
+									buttonText="Resolver reclamação"
+									buttonColor="var(--color-orange)"
+									buttonOnClick={handleSolveComplaint}
+								/>
+							))}
+							<strong className="green">Reclamações resolvidas:</strong>
+							{!complaints.showing.solved.length && (
+								<span className="card">Nenhuma reclamação resolvida</span>
+							)}
+							{complaints.showing.solved.map((citizen, index) => (
+								<CitizenInfo
+									index={index}
+									color="var(--color-green)"
+									name={citizen.name}
+									adress={citizen.adress}
+									whatsapp={citizen.whatsapp}
+									description={citizen.description}
+									created_at={citizen.created_at}
+									solved_at={citizen.solved_at}
+									showButton
+									buttonText="Desfazer resolução da reclamação"
+									buttonColor="var(--color-green)"
+									unsolve
+									buttonOnClick={handleSolveComplaint}
+								/>
 							))}
 						</ComplaintInfo>
 					)}

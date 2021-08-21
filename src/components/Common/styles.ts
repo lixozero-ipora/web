@@ -28,6 +28,25 @@ export const ButtonOutline = styled.button<ButtonOutlineProps>`
 		width: 100%;
 	}
 `
+export const Button = styled.button`
+	background-color: var(--color-green);
+	border: none;
+	color: white;
+	padding: 5px 15px;
+	border-radius: 5px;
+	transition: all ease 500ms;
+	font-size: 2rem;
+
+	:hover {
+		transform: translateY(-3px);
+		box-shadow: 3px 3px var(--color-blue-darker);
+	}
+
+	@media (max-width: 992px) {
+		display: block;
+		width: 100%;
+	}
+`
 
 export const BlurredImageContainer = styled.div`
 	height: 50vh;

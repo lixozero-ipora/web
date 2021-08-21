@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { ButtonOutline } from '../../components/Common/styles'
 import { LoadingMessage } from '../../components/Loading/styles'
 
 export const ComplaintsViewContainer = styled.div`
@@ -35,56 +36,56 @@ export const MapBoxContainer = styled.div`
 	}
 `
 
+export const ComplaintMessage = styled.p`
+	text-align: center;
+	background-color: white;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	color: ${(props) => props.color};
+`
+
 export const ComplaintsBoxContainer = styled.section`
 	width: 35%;
 	height: calc(100vh - 90px);
 	border-left: 2px solid var(--color-green);
-	padding: 5px;
 	overflow: scroll;
-`
+	padding-right: 10px;
 
-export const ComplaintMessage = styled.p`
-	margin: 15px;
-	text-align: center;
-	background-color: white;
-	border-radius: 10px;
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-	color: var(--color-green);
+	div,
+	span.info,
+	span.card,
+	${ComplaintMessage} {
+		border-top-right-radius: 10px;
+		border-bottom-right-radius: 10px;
+	}
+
+	${ButtonOutline} {
+		display: block;
+		margin: 20px auto;
+	}
 `
 
 export const ComplaintInfo = styled.div`
 	display: flex;
 	flex-direction: column;
 	overflow-y: scroll;
+	margin-right: -10px;
 
-	span.info {
+	span.card {
 		margin-top: 5px;
 		padding: 5px;
 		background-color: white;
-		border-radius: 10px;
-
-		strong {
-			color: var(--color-green);
-		}
 	}
 
 	> strong {
 		text-align: center;
 		font-size: 2rem;
-		color: var(--color-blue-dark);
 	}
-`
 
-export const CitizenInfo = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin-top: 5px;
-	background-color: white;
-	border: 1px solid var(--color-green);
-	padding: 5px;
-	border-radius: 20px;
+	strong.green {
+		color: var(--color-green);
+	}
 
-	span.info {
-		padding: 0;
+	strong.red {
+		color: var(--color-orange);
 	}
 `

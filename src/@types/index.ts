@@ -12,12 +12,13 @@ export interface EditingSchedule {
 	items: ScheduleItem[]
 }
 
-interface Citizen {
+export interface ComplaintRegistry {
 	name: string
 	adress: string
 	whatsapp: string
 	description: string
-	created_at: string
+	created_at: Date
+	solved_at?: Date
 }
 
 export interface Complaint {
@@ -25,7 +26,9 @@ export interface Complaint {
 	latitude: number
 	longitude: number
 	occurrences: number
-	created_at: string
-	updated_at: string
-	citizens: Citizen[]
+	has_active_complaints: boolean
+	created_at: Date
+	updated_at: Date
+	active: ComplaintRegistry[]
+	solved: ComplaintRegistry[]
 }
