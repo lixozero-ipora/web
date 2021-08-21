@@ -123,7 +123,7 @@ const EditSchedule: React.FC = () => {
 		<>
 			<NavBar />
 			<EditScheduleContainer>
-				<Title>Edição de datas</Title>
+				<Title>Gerenciar datas</Title>
 
 				<ContentText>
 					<StepsContainer>
@@ -187,7 +187,7 @@ const EditSchedule: React.FC = () => {
 					<AnimatedInputText
 						type="date"
 						stayUp
-						themeColor="var(--color-red)"
+						themeColor="var(--color-orange)"
 						label="Fim"
 						onChange={handleChangeEnd}
 						value={newEnd}
