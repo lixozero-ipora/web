@@ -68,6 +68,6 @@ export const EditItemInfo = styled.div`
 		background-color: var(--color-green);
 	}
 	span:nth-child(3) {
-		background-color: var(--color-red);
+		background-color: var(--color-orange);
 	}
 `

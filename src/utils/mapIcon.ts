@@ -1,6 +1,6 @@
 import Leaflet from 'leaflet'
 
-import redMapIconSvg from '../assets/images/trash-alt-solid-red.svg'
+import redMapIconSvg from '../assets/images/trash-alt-solid-orange.svg'
 import greenMapIconSvg from '../assets/images/trash-alt-solid-green.svg'
 
 const mapIconRed = Leaflet.icon({
