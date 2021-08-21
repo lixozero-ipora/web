@@ -3,12 +3,15 @@ import { LoadingContainer, LoadingElement, LoadingMessage } from './styles'
 
 interface LoadingProps {
 	message?: string
+	size?: 'normal' | 'large'
 }
 
-const Loading: React.FC<LoadingProps> = ({ message }) => (
+const Loading: React.FC<LoadingProps> = ({ message, size = 'normal' }) => (
 	<LoadingContainer>
-		<LoadingMessage>{!message ? 'Carregando' : message}</LoadingMessage>
-		<LoadingElement />
+		<LoadingMessage size={size}>
+			{!message ? 'Carregando' : message}
+		</LoadingMessage>
+		<LoadingElement size={size} />
 	</LoadingContainer>
 )
 
