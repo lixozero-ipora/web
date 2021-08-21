@@ -17,9 +17,9 @@ const Routes: React.FC = () => (
 		<Route path="/denuncia" Component={<Complaint />} />
 		<Route path="/sobre" Component={<About />} />
 		<Route path="/admin" Component={<Admin />} />
-		<Route path="/editar-horarios" Component={<EditSchedule />} isPrivate />
+		<Route path="/gerenciar-datas" Component={<EditSchedule />} isPrivate />
 		<Route
-			path="/visualizar-reclamacoes"
+			path="/gerenciar-reclamacoes"
 			Component={<ComplaintsView />}
 			isPrivate
 		/>

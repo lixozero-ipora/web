@@ -37,10 +37,10 @@ const Admin: React.FC = () => {
 				{isLogedIn ? (
 					<>
 						<ButtonOutline>
-							<Link to="/editar-horarios">Editar horários</Link>
+							<Link to="/gerenciar-datas">Gerenciar datas</Link>
 						</ButtonOutline>
 						<ButtonOutline>
-							<Link to="/visualizar-reclamacoes">Visualizar reclamações</Link>
+							<Link to="/gerenciar-reclamacoes">Gerenciar reclamações</Link>
 						</ButtonOutline>
 					</>
 				) : (

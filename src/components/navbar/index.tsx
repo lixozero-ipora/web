@@ -23,9 +23,9 @@ const NavBar: React.FC = () => {
 				{isLogedIn ? (
 					<>
 						<MenuLink to="/">Página inicial</MenuLink>
-						<MenuLink to="/editar-horarios">Editar horários</MenuLink>
-						<MenuLink to="/visualizar-reclamacoes">
-							Visualizar reclamações
+						<MenuLink to="/gerenciar-datas">Gerenciar datas</MenuLink>
+						<MenuLink to="/gerenciar-reclamacoes">
+							Gerenciar reclamações
 						</MenuLink>
 					</>
 				) : (
