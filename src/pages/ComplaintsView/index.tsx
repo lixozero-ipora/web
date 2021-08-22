@@ -186,6 +186,7 @@ const ComplaintsView: React.FC = () => {
 									index={index}
 									color="var(--color-orange)"
 									name={citizen.name}
+									neighborhood={citizen.neighborhood}
 									adress={citizen.adress}
 									whatsapp={citizen.whatsapp}
 									description={citizen.description}
@@ -206,6 +207,7 @@ const ComplaintsView: React.FC = () => {
 									color="var(--color-green)"
 									name={citizen.name}
 									adress={citizen.adress}
+									neighborhood={citizen.neighborhood}
 									whatsapp={citizen.whatsapp}
 									description={citizen.description}
 									created_at={citizen.created_at}

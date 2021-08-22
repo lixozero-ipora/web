@@ -14,6 +14,7 @@ export interface EditingSchedule {
 
 export interface ComplaintRegistry {
 	name: string
+	neighborhood: string
 	adress: string
 	whatsapp: string
 	description: string

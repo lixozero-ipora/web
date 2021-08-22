@@ -17,6 +17,7 @@ const CitizenInfo: React.FC<CitizenInfoProps> = ({
 	index,
 	color,
 	name,
+	neighborhood,
 	adress,
 	whatsapp,
 	description,
@@ -40,7 +41,7 @@ const CitizenInfo: React.FC<CitizenInfoProps> = ({
 				<strong>Nome</strong>: {name}
 			</span>
 			<span className="info">
-				<strong>Endereço</strong>: {adress}
+				<strong>Endereço</strong>: {`${neighborhood} - ${adress}`}
 			</span>
 			<span className="info">
 				<strong>Whatsapp</strong>:{' '}
