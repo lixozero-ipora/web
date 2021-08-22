@@ -59,6 +59,7 @@ export const ComplaintsBoxContainer = styled.section`
 	}
 
 	${ButtonOutline} {
+		font-size: 1.6rem;
 		display: block;
 		margin: 20px auto;
 	}

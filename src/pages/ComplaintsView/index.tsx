@@ -103,6 +103,22 @@ const ComplaintsView: React.FC = () => {
 		}
 	}
 
+	const handleGenerateReport = async () => {
+		const report = await api.get('/reports', { responseType: 'blob' })
+
+		const blobURL = URL.createObjectURL(new Blob([report.data]))
+		const link = document.createElement('a')
+		link.href = blobURL
+		link.setAttribute(
+			'download',
+			`relatorio_${new Date().toLocaleDateString()}.xlsx`
+		)
+		link.style.display = 'none'
+		document.body.appendChild(link)
+		link.click()
+		link.remove()
+	}
+
 	return (
 		<>
 			<NavBar />
@@ -149,6 +165,9 @@ const ComplaintsView: React.FC = () => {
 						{showSolved
 							? 'Esconder reclamações resolvidas'
 							: 'Mostrar reclamações resolvidas'}
+					</ButtonOutline>
+					<ButtonOutline onClick={handleGenerateReport}>
+						Gerar relatório
 					</ButtonOutline>
 					{!complaints.showing.id && (
 						<ComplaintMessage>
