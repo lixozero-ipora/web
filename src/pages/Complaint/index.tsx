@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { MapContainer, TileLayer } from 'react-leaflet'
-import { LeafletMouseEvent, LocationEvent, Map } from 'leaflet'
+import { LeafletMouseEvent, LocationEvent } from 'leaflet'
 import { BsPencilSquare } from 'react-icons/bs'
 import { SiOpenstreetmap } from 'react-icons/si'
 import swal from 'sweetalert'
@@ -11,6 +11,7 @@ import { toast } from 'react-toastify'
 
 import NavBar from '../../components/Navbar'
 import {
+	AddressInfoContainer,
 	ComplaintButton,
 	ComplaintContentContainer,
 	ComplaintMapContainer,
@@ -33,6 +34,7 @@ import AnimatedInputText from '../../components/AnimatedInputText'
 import alreadyComplainedCheck from '../../utils/alreadyComplainedCheck'
 import api from '../../services/api'
 import Loading from '../../components/Loading'
+import iporaNeighborhoods from '../../assets/iporaNeighborhoods.json'
 
 const Complaint: React.FC = () => {
 	useScrollTop()
@@ -40,7 +42,12 @@ const Complaint: React.FC = () => {
 	const [position, setPosition] = useState({ latitude: 0, longitude: 0 })
 	const [loading, setLoading] = useState(false)
 	const [name, setName] = useState('')
-	const [adress, setAdress] = useState('')
+	const [adress, setAdress] = useState({
+		neighborhood: '',
+		street: '',
+		number: '',
+		complement: '',
+	})
 	const [whatsapp, setWhatsapp] = useState('')
 	const [description, setDescripion] = useState('')
 
@@ -59,27 +66,34 @@ const Complaint: React.FC = () => {
 		}
 
 		const schema = yup.object().shape({
-			name: yup.string().required('O campo nome é obrigatório!'),
-			adress: yup.string().required('O campo endereço é obrigatório!'),
+			name: yup.string().required('Você deve fornecer o seu nome'),
 			whatsapp: yup
 				.string()
 				.min(8, 'O seu número deve ter pelo menos 8 caracteres')
 				.max(15, 'O seu número deve ter no máximo 15 caracteres')
 				.required('O campo telefone é obrigatório!'),
+			neighborhood: yup.string().required('Você precisa selecionar um bairro'),
+			street: yup.string().required('Você deve digitar a sua Rua ou Avenida'),
+			number: yup
+				.string()
+				.required('Você precisa fornecer um número no endereço'),
 			description: yup.string().required('O campo descrição é obrigatória!'),
 		})
 
-		const complaintInfo = {
-			name,
-			adress,
-			whatsapp,
-			description,
-			latitude: position.latitude,
-			longitude: position.longitude,
-		}
-
 		try {
-			await schema.validate(complaintInfo, { abortEarly: false })
+			await schema.validate(
+				{
+					name,
+					neighborhood: adress.neighborhood,
+					street: adress.street,
+					number: adress.number,
+					whatsapp,
+					description,
+					latitude: position.latitude,
+					longitude: position.longitude,
+				},
+				{ abortEarly: false }
+			)
 		} catch (error) {
 			error.errors.map((msg: string) => toast.error(msg, { autoClose: 10000 }))
 			return
@@ -90,6 +104,18 @@ const Complaint: React.FC = () => {
 				return
 			}
 			setLoading(true)
+
+			const complaintInfo = {
+				name,
+				neighborhood: adress.neighborhood,
+				adress: `${adress.street}, ${adress.number}.${
+					adress.complement && ` ${adress.complement}`
+				}`,
+				whatsapp,
+				description,
+				latitude: position.latitude,
+				longitude: position.longitude,
+			}
 
 			await api.post('/complaints', complaintInfo)
 
@@ -125,6 +151,13 @@ const Complaint: React.FC = () => {
 			'success'
 		)
 		setPosition({ latitude: event.latlng.lat, longitude: event.latlng.lng })
+	}
+
+	const handleChangeAdress = (
+		value: string,
+		keyToChange: keyof typeof adress
+	) => {
+		setAdress((prevState) => ({ ...prevState, [keyToChange]: value }))
 	}
 
 	return (
@@ -183,11 +216,44 @@ const Complaint: React.FC = () => {
 							value={name}
 							onChange={setName}
 						/>
-						<AnimatedInputText
-							label="Endereço (Logradouro, número)"
-							value={adress}
-							onChange={(e) => setAdress(e)}
-						/>
+						<AddressInfoContainer>
+							<div className="select-container">
+								<select
+									defaultValue="default"
+									onChange={(e) =>
+										handleChangeAdress(e.target.value, 'neighborhood')
+									}
+								>
+									<option hidden disabled value="default">
+										Selecionar bairro
+									</option>
+									{iporaNeighborhoods.map((neighborhood) => (
+										<option key={neighborhood} value={neighborhood}>
+											{neighborhood}
+										</option>
+									))}
+								</select>
+							</div>
+							<AnimatedInputText
+								label="Rua/Avenida"
+								value={adress.street}
+								onChange={(e) => handleChangeAdress(e, 'street')}
+								stayUp
+							/>
+							<AnimatedInputText
+								label="Número"
+								type="number"
+								value={adress.number}
+								onChange={(e) => handleChangeAdress(e, 'number')}
+								stayUp
+							/>
+							<AnimatedInputText
+								label="Complemento"
+								value={adress.complement}
+								onChange={(e) => handleChangeAdress(e, 'complement')}
+								stayUp
+							/>
+						</AddressInfoContainer>
 						<AnimatedInputText
 							label="Telefone com DDD"
 							value={whatsapp}

@@ -31,7 +31,7 @@ export default createGlobalStyle`
     cursor: pointer;
   }
   
-  button, input, textarea {
+  button, input, textarea, select {
     font-family: Poppins, Arial, Helvetica, sans-serif;
   } 
 

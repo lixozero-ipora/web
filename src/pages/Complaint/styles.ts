@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { InputContainer } from '../../components/AnimatedInputText/styles'
 import { CardWithBrandThreeTexts } from '../../components/Common/styles'
 
 interface ComplaintButtonProps {
@@ -52,6 +53,63 @@ export const ComplaintContentContainer = styled.div`
 		> p {
 			width: 100%;
 		}
+	}
+`
+
+export const AddressInfoContainer = styled.div`
+	display: flex;
+	align-items: flex-end;
+	margin-top: 10px;
+	position: relative;
+	flex-wrap: wrap;
+
+	border: 1px solid var(--color-green);
+	border-radius: 10px;
+	padding: 25px 0 5px 0;
+
+	:before {
+		width: auto;
+		height: auto;
+		content: 'Endereço';
+		font-weight: bold;
+		color: var(--color-green);
+		position: absolute;
+		top: 0;
+		left: 5px;
+	}
+
+	.select-container {
+		display: flex;
+		position: relative;
+		justify-content: space-between;
+		flex: 1;
+
+		:before {
+			width: auto;
+			height: auto;
+			content: 'Bairro';
+			position: absolute;
+			top: -23px;
+			left: 15px;
+			color: var(--color-green);
+		}
+
+		select {
+			min-width: 150px;
+			height: 36px;
+			width: 100%;
+			margin: 0 5px;
+			border-radius: 10px;
+			background-color: white;
+			border-color: var(--color-green);
+			padding: 5px;
+		}
+	}
+
+	${InputContainer} {
+		margin-left: 5px;
+		margin-right: 5px;
+		flex: 1;
 	}
 `
 
