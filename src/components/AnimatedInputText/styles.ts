@@ -39,6 +39,8 @@ export const LabelText = styled.span<LabelTextProps>`
 
 export const InputElement = styled.input<InputElementProps>`
 	padding: 7px 10px;
+	width: 100%;
+	min-width: 120px;
 
 	border-radius: 10px;
 	border: 1px solid ${(props) => props.borderColor};
