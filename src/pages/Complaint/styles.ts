@@ -65,7 +65,7 @@ export const AddressInfoContainer = styled.div`
 
 	border: 1px solid var(--color-green);
 	border-radius: 10px;
-	padding: 25px 0 5px 0;
+	padding: 15px 0 5px 0;
 
 	:before {
 		width: auto;
@@ -73,8 +73,10 @@ export const AddressInfoContainer = styled.div`
 		content: 'Endereço';
 		font-weight: bold;
 		color: var(--color-green);
+		background-color: white;
+		padding: 0 5px;
 		position: absolute;
-		top: 0;
+		top: -10px;
 		left: 5px;
 	}
 
@@ -83,6 +85,7 @@ export const AddressInfoContainer = styled.div`
 		position: relative;
 		justify-content: space-between;
 		flex: 1;
+		margin-top: 5px;
 
 		:before {
 			width: auto;
@@ -110,6 +113,10 @@ export const AddressInfoContainer = styled.div`
 		margin-left: 5px;
 		margin-right: 5px;
 		flex: 1;
+	}
+
+	@media (max-width: 360px) {
+		padding-top: 25px !important;
 	}
 `
 
