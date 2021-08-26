@@ -13,6 +13,7 @@ export const PostContainer = styled.div`
 export const PostImage = styled.img`
 	background-color: white;
 	padding: 5px;
+	cursor: pointer;
 
 	display: block;
 	width: 30%;
@@ -52,6 +53,7 @@ export const PostTitle = styled.strong`
 	font-size: 4rem;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 
 	span {
 		display: flex;

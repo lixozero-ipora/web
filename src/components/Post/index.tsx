@@ -29,9 +29,9 @@ const Post: React.FC<PostProps> = ({
 	onReadMore,
 }) => (
 	<PostContainer data-aos={preventAnimation ? null : 'fade-right'}>
-		<PostImage src={image} />
+		<PostImage src={image} onClick={onReadMore} />
 		<PostContent>
-			<PostTitle>
+			<PostTitle onClick={onReadMore}>
 				<span>{titleIcon}</span>
 				{title}
 			</PostTitle>
