@@ -5,6 +5,11 @@ import { BottomMessage, FooterContainer, FooterText } from './styles'
 const Footer: React.FC = () => (
 	<FooterContainer>
 		<FooterText>
+			<p className="large">
+				Sua <strong>sugestão</strong> é muito bem vinda, basta enviar um email
+				para <strong>lixozeroipora@gmail.com</strong>. Muito obrigado por
+				utilizar o sistema!
+			</p>
 			<p>
 				Projeto desenvolvido pelos acadêmicos do curso de Análise e
 				Desenvolvimento de Sistemas do Instituto Federal Goiano - Campus Iporá

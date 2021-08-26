@@ -11,6 +11,18 @@ export const FooterText = styled.div`
 	background-color: var(--color-green);
 	color: #fff;
 	font-size: 1.3rem;
+
+	p > strong {
+		padding: 0 5px;
+		background-color: white;
+		border-radius: 10px;
+		color: var(--color-green);
+	}
+
+	.large {
+		font-size: 1.7rem;
+		margin-bottom: 10px;
+	}
 `
 
 export const BottomMessage = styled.p`
