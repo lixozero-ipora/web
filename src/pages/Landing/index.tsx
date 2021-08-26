@@ -69,7 +69,7 @@ const Landing: React.FC = () => {
 						preventAnimation
 						title="Veja as datas da coleta"
 						titleIcon={<MdDateRange size={40} />}
-						text="Aqui você pode visualizar os datas de coleta em cada bairro. A Secretaria de Obras da Prefeitura de Iporá dispõe de datas organizadas, definindo o cronograma para ação da coleta urbana em Iporá. Para ver mais sobre o projeto basta clicar no botão abaixo."
+						text="Aqui você pode visualizar os datas de coleta em cada bairro. A Secretaria de Obras da Prefeitura de Iporá dispõe de datas organizadas, definindo o cronograma para ação da coleta urbana em Iporá. Para ver mais, basta clicar no botão abaixo."
 						image={scheduleDateSVG}
 						showReadMore
 						onReadMore={handleRedirectSchedule}
@@ -77,7 +77,7 @@ const Landing: React.FC = () => {
 					<Post
 						title="Reclame aqui"
 						titleIcon={<MdHearing size={40} />}
-						text="Em nosso município, há lixos que não são coletados na data definida. Nesse caso, faça uma reclamação para o lixo ser recolhido, informando o ponto da não-coleta, nome, endereço, Whatsapp e descrição. O seu feedback é muito importante para uma Iporá mais limpa, organizada e saudável! Para ver mais sobre o projeto basta clicar no botão abaixo."
+						text="Em nosso município, há lixos que não são coletados na data definida. Nesse caso, faça uma reclamação para o lixo ser recolhido, informando o ponto da não-coleta, nome, endereço, Whatsapp e descrição. O seu feedback é muito importante para uma Iporá mais limpa, organizada e saudável! Para ver mais, basta clicar no botão abaixo."
 						image={complainSVG}
 						showReadMore
 						onReadMore={handleRedirectComplaint}
@@ -85,7 +85,7 @@ const Landing: React.FC = () => {
 					<Post
 						title="Sobre"
 						titleIcon={<MdAccountBalance size={40} />}
-						text="Este é um projeto criado durante um período do curso de Análise e Desenvolvimento de Sistemas no Instituto Federal Goiano Campus Iporá. Para ver mais sobre o projeto basta clicar no botão abaixo."
+						text="Este é um projeto criado durante um período do curso de Análise e Desenvolvimento de Sistemas no Instituto Federal Goiano Campus Iporá. Para ver mais, basta clicar no botão abaixo."
 						image={ifGoianoAndCityMallSVG}
 						showReadMore
 						onReadMore={handleRedirectReadMore}
