@@ -55,9 +55,7 @@ const LocationMarker: React.FC<LocationMarkerProps> = ({
 	return (
 		<>
 			<GetMyLocationContainer>
-				<Button onClick={handleGetMyLocation}>
-					Usar a minha localização atual
-				</Button>
+				<Button onClick={handleGetMyLocation}>Auto Localize</Button>
 			</GetMyLocationContainer>
 			<Marker
 				interactive={false}

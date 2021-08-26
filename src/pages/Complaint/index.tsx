@@ -175,17 +175,6 @@ const Complaint: React.FC = () => {
 				</Title>
 				<ContentText>
 					<p>
-						A prefeitura dispõe desta ferramenta de feedback com o objetivo de
-						fornecer informações para aprimoramento do planejamento e execução
-						de rotas percorridas pelo caminhão coletor ou das estratégias de
-						recolhimento de lixo planejada e executada pelos coletores.
-					</p>
-					<p>
-						Desta forma, o gestor público encarregado pode ampliar de forma
-						operacional a cobertura da política de coleta urbana em todas as
-						casas iporaenses, assim como fiscalizar todo o processo.
-					</p>
-					<p>
 						Para efetuar uma reclamação, se caso o caminhão de coleta não passou
 						pela sua região, deve ser verificado primeiro as data pré-definidas{' '}
 						<Link to="/datas">aqui</Link>.
@@ -270,8 +259,10 @@ const Complaint: React.FC = () => {
 							<SiOpenstreetmap size={32} /> Passo 2
 						</p>
 						<p>
-							Dê um zoom no mapa, e marque com um clique o local de sua moradia,
-							que é o ponto da não-coleta e, confirme no botão “Reclamar”.
+							Clique no botão “Auto Localize” ou dê um zoom no mapa com a
+							rolagem do mouse ou botão com símbolo “+” no lado esquerdo. Assim
+							que localizar o ponto da não-coleta marque com um clique. Em ambas
+							as ações, confirme no botão “Adicionar reclamação”.
 						</p>
 					</ComplaintStep>
 					<ComplaintMapContainer>
