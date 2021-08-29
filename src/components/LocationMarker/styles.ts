@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const GetMyLocationContainer = styled.div`
+	display: flex;
+	justify-content: flex-end;
 	position: absolute;
 	width: 30%;
 	height: 10%;
