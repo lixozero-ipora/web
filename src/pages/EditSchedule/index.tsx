@@ -123,7 +123,7 @@ const EditSchedule: React.FC = () => {
 		<>
 			<NavBar />
 			<EditScheduleContainer>
-				<Title>Gerenciar datas</Title>
+				<Title>Gerencie Datas de Coleta</Title>
 
 				<ContentText>
 					<StepsContainer>

@@ -11,13 +11,13 @@ import NavBar from '../../components/Navbar';
 import ifAndCityHall from '../../assets/images/if_and_city_hall.png';
 import Footer from '../../components/Footer';
 import useScrollTop from '../../hooks/useScrollTop';
-import { AboutContent } from './styles';
+import { AboutContent, AboutContainer } from './styles';
 
 const About: React.FC = () => {
 	useScrollTop();
 
 	return (
-		<>
+		<AboutContainer>
 			<NavBar />
 			<BlurredImageContainer>
 				<Image src={ifAndCityHall} />
@@ -33,7 +33,8 @@ const About: React.FC = () => {
 					<p>
 						O projeto desenvolvido teve o objetivo de auxiliar a situação de
 						não-coleta dos resíduos em alguns bairros de pequenas cidades. E com
-						isso, otimizar a política urbana na cobertura, casa à casa, de lixo.
+						isso, otimizar a política urbana em sua cobertura da coleta de lixo,
+						casa à casa.
 					</p>
 					<p>
 						O presente Software fornece um espaço digital para que datas de
@@ -118,7 +119,7 @@ const About: React.FC = () => {
 				</AboutContent>
 			</ContentContainer>
 			<Footer />
-		</>
+		</AboutContainer>
 	);
 };
 

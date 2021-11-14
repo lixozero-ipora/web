@@ -1,5 +1,27 @@
 import styled from 'styled-components';
-import { ContentText } from '../../components/Common/styles';
+import {
+	BlurredImageContainer,
+	ContentText,
+	Image,
+} from '../../components/Common/styles';
+
+export const AboutContainer = styled.div`
+	${Image} {
+		height: auto;
+		width: 60%;
+		padding: 0;
+		margin: 0;
+	}
+	@media (max-width: 768px) {
+		${BlurredImageContainer} {
+			${Image} {
+				width: 80%;
+			}
+			height: 30vh;
+			padding: 0 10px;
+		}
+	}
+`;
 
 export const AboutContent = styled(ContentText)`
 	li {

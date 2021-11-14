@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from '../Common/styles';
 
 export const PostContainer = styled.div`
 	display: flex;
@@ -69,4 +70,10 @@ export const PostText = styled.p`
 export const ButtonContainer = styled.div`
 	display: flex;
 	justify-content: flex-end;
+
+	> ${Button} {
+		display: inline-flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 `;

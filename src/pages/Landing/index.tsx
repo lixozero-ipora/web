@@ -69,7 +69,7 @@ const Landing: React.FC = () => {
 						preventAnimation
 						title="Veja as datas da coleta"
 						titleIcon={<MdDateRange size={40} />}
-						text="Aqui você pode visualizar os datas de coleta em cada bairro. A Secretaria de Obras da Prefeitura de Iporá dispõe de datas organizadas, definindo o cronograma para ação da coleta urbana em Iporá. Para ver mais, basta clicar no botão abaixo."
+						text="Visualize as datas de coleta urbana por bairro de sua cidade. Sua prefeitura deve dispor de datas semanais ou mensais, definidas por um cronograma aprovado a ser executado pelo caminhão de lixo, bairro a bairro. Clique no botão para ver estas datas."
 						image={scheduleDateSVG}
 						showReadMore
 						onReadMore={handleRedirectSchedule}

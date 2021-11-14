@@ -1,5 +1,6 @@
 import React from 'react';
-import { ButtonOutline } from '../Common/styles';
+import { FiChevronRight } from 'react-icons/fi';
+import { Button } from '../Common/styles';
 import {
 	ButtonContainer,
 	PostContainer,
@@ -38,7 +39,10 @@ const Post: React.FC<PostProps> = ({
 			<PostText>{text}</PostText>
 			{showReadMore && (
 				<ButtonContainer>
-					<ButtonOutline onClick={onReadMore}>Leia mais</ButtonOutline>
+					<Button onClick={onReadMore}>
+						Acesse
+						<FiChevronRight size={25} />
+					</Button>
 				</ButtonContainer>
 			)}
 		</PostContent>

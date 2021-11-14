@@ -44,7 +44,7 @@ export const TableItem = styled.div`
 	}
 	p:nth-child(3) {
 		flex: 1;
-		color: var(--color-orange);
+		color: var(--color-green);
 	}
 
 	@media (max-width: 768px) {

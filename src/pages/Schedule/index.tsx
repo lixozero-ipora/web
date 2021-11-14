@@ -60,10 +60,8 @@ const Schedule: React.FC = () => {
 						<Link to="/denuncia">reclame aqui</Link>.
 					</p>
 					<p>
-						Aqui você visualiza as datas de coleta urbana por bairro de sua
-						cidade. Sua prefeitura deve dispor de datas semanais ou mensais,
-						definidas por um cronograma aprovado para serem executadas. Clique
-						no botão para ver estas datas.
+						A seguir, constam os bairros conforme as datas definidas para a
+						coleta.
 					</p>
 				</ContentText>
 				<ScheduleContainer>
