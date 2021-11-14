@@ -1,3 +1,3 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const EditScheduleListContainer = styled.div``
+export const EditScheduleListContainer = styled.div``;

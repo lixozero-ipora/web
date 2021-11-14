@@ -1,33 +1,33 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import AnimatedInputText from '../../components/AnimatedInputText'
-import { ButtonOutline } from '../../components/Common/styles'
-import Loading from '../../components/Loading'
-import NavBar from '../../components/Navbar'
-import { useAuth } from '../../store/authContext'
-import { AdminContainer } from './styles'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import AnimatedInputText from '../../components/AnimatedInputText';
+import { ButtonOutline } from '../../components/Common/styles';
+import Loading from '../../components/Loading';
+import NavBar from '../../components/Navbar';
+import { useAuth } from '../../store/authContext';
+import { AdminContainer } from './styles';
 
 const Admin: React.FC = () => {
-	const { isLogedIn, handleLogin } = useAuth()
-	const [loading, setLoading] = useState(false)
-	const [name, setName] = useState('')
-	const [password, setPassword] = useState('')
+	const { isLogedIn, handleLogin } = useAuth();
+	const [loading, setLoading] = useState(false);
+	const [name, setName] = useState('');
+	const [password, setPassword] = useState('');
 
 	const handleSubmit = (event: React.FormEvent) => {
-		event.preventDefault()
-		setLoading(true)
+		event.preventDefault();
+		setLoading(true);
 
 		handleLogin(name, password, () => {
-			setLoading(false)
-		})
-	}
+			setLoading(false);
+		});
+	};
 
 	const handleChangeName = (input: string) => {
-		setName(input)
-	}
+		setName(input);
+	};
 	const handleChangeEmail = (input: string) => {
-		setPassword(input)
-	}
+		setPassword(input);
+	};
 
 	return (
 		<>
@@ -37,10 +37,10 @@ const Admin: React.FC = () => {
 				{isLogedIn ? (
 					<>
 						<ButtonOutline>
-							<Link to="/gerenciar-datas">Gerenciar datas</Link>
+							<Link to="/gerenciar-datas">Gerencie Datas de Coleta</Link>
 						</ButtonOutline>
 						<ButtonOutline>
-							<Link to="/gerenciar-reclamacoes">Gerenciar reclamações</Link>
+							<Link to="/gerenciar-reclamacoes">Gerencie Reclamações</Link>
 						</ButtonOutline>
 					</>
 				) : (
@@ -65,7 +65,7 @@ const Admin: React.FC = () => {
 				)}
 			</AdminContainer>
 		</>
-	)
-}
+	);
+};
 
-export default Admin
+export default Admin;

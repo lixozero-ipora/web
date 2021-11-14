@@ -1,16 +1,15 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const FooterContainer = styled.footer`
 	margin-top: 50px;
 	width: 100%;
-`
+`;
 
 export const FooterText = styled.div`
 	padding: 10px 35px;
 
 	background-color: var(--color-green);
 	color: #fff;
-	font-size: 1.3rem;
 
 	p > strong {
 		padding: 0 5px;
@@ -23,7 +22,7 @@ export const FooterText = styled.div`
 		font-size: 1.7rem;
 		margin-bottom: 10px;
 	}
-`
+`;
 
 export const BottomMessage = styled.p`
 	color: var(--color-text-dark);
@@ -33,4 +32,4 @@ export const BottomMessage = styled.p`
 		color: var(--color-blue-light);
 		font-weight: bold;
 	}
-`
+`;

@@ -1,16 +1,16 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { MdAccountBalance, MdDateRange, MdHearing } from 'react-icons/md'
-import Slider from 'react-slick'
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { MdAccountBalance, MdDateRange, MdHearing } from 'react-icons/md';
+import Slider from 'react-slick';
 
-import carouselImageOne from '../../assets/images/carousel_1.svg'
-import carouselImageTwo from '../../assets/images/carousel_2.svg'
-import carouselImageThree from '../../assets/images/carousel_3.png'
-import scheduleDateSVG from '../../assets/images/schedule_date.svg'
-import complainSVG from '../../assets/images/complaint.svg'
-import ifGoianoAndCityMallSVG from '../../assets/images/if_and_city_hall.png'
-import NavBar from '../../components/Navbar'
-import Post from '../../components/Post'
+import carouselImageOne from '../../assets/images/carousel_1.svg';
+import carouselImageTwo from '../../assets/images/carousel_2.svg';
+import carouselImageThree from '../../assets/images/carousel_3.png';
+import scheduleDateSVG from '../../assets/images/schedule_date.svg';
+import complainSVG from '../../assets/images/complaint.svg';
+import ifGoianoAndCityMallSVG from '../../assets/images/if_and_city_hall.png';
+import NavBar from '../../components/Navbar';
+import Post from '../../components/Post';
 
 import {
 	ImageContainer,
@@ -18,30 +18,30 @@ import {
 	ContentContainer,
 	LadingContainer,
 	SliderContainer,
-} from './styles'
-import Footer from '../../components/Footer'
-import useScrollTop from '../../hooks/useScrollTop'
+} from './styles';
+import Footer from '../../components/Footer';
+import useScrollTop from '../../hooks/useScrollTop';
 
 const imagesArr = [
 	{ path: carouselImageOne },
 	{ path: carouselImageTwo },
 	{ path: carouselImageThree, whiteBg: true },
-]
+];
 
 const Landing: React.FC = () => {
-	useScrollTop()
-	const { push } = useHistory()
+	useScrollTop();
+	const { push } = useHistory();
 
 	const handleRedirectSchedule = () => {
-		push('/datas')
-	}
+		push('/datas');
+	};
 
 	const handleRedirectComplaint = () => {
-		push('/denuncia')
-	}
+		push('/denuncia');
+	};
 	const handleRedirectReadMore = () => {
-		push('/sobre')
-	}
+		push('/sobre');
+	};
 
 	return (
 		<>
@@ -77,7 +77,7 @@ const Landing: React.FC = () => {
 					<Post
 						title="Reclame aqui"
 						titleIcon={<MdHearing size={40} />}
-						text="Em nosso município, há lixos que não são coletados na data definida. Nesse caso, faça uma reclamação para o lixo ser recolhido, informando o ponto da não-coleta, nome, endereço, Whatsapp e descrição. O seu feedback é muito importante para uma Iporá mais limpa, organizada e saudável! Para ver mais, basta clicar no botão abaixo."
+						text="Reclame aqui se o seu lixo não foi coletado na data pré-definida por sua prefeitura. A sua reclamação é importante para manter sua cidade limpa, organizada e saudável! Basta clicar neste botão para realizar sua reclamação."
 						image={complainSVG}
 						showReadMore
 						onReadMore={handleRedirectComplaint}
@@ -85,7 +85,7 @@ const Landing: React.FC = () => {
 					<Post
 						title="Sobre"
 						titleIcon={<MdAccountBalance size={40} />}
-						text="Este é um projeto criado durante um período do curso de Análise e Desenvolvimento de Sistemas no Instituto Federal Goiano Campus Iporá. Para ver mais, basta clicar no botão abaixo."
+						text="Este App Web foi implementado na disciplina “Gerência de Projetos da Sistemas” no curso de Tecnologia em Análise e Desenvolvimento de Sistemas (TADS), do Instituto Federal Goiano – Campi Iporá pelos acadêmicos do 5º Período, sob coordenação da Professora EBTT Luciana Recart Cardoso. O produto foi desenvolvido no primeiro semestre de 2021, durante a pandemia COVID-19 no projeto “Lixo Zero Iporá”. Clique no botão para ver mais detalhes."
 						image={ifGoianoAndCityMallSVG}
 						showReadMore
 						onReadMore={handleRedirectReadMore}
@@ -94,7 +94,7 @@ const Landing: React.FC = () => {
 			</LadingContainer>
 			<Footer />
 		</>
-	)
-}
+	);
+};
 
-export default Landing
+export default Landing;

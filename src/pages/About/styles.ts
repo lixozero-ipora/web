@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { ContentText } from '../../components/Common/styles'
+import styled from 'styled-components';
+import { ContentText } from '../../components/Common/styles';
 
 export const AboutContent = styled(ContentText)`
 	li {
@@ -9,38 +9,32 @@ export const AboutContent = styled(ContentText)`
 	li > span {
 		padding: 5px;
 		border-radius: 10px;
+		color: white;
+		background-color: var(--color-green);
 	}
 
 	.magenta {
 		background-color: #c456a5;
-		color: white;
 	}
 	.light-blue {
 		background-color: #74b1bf;
-		color: white;
 	}
 	.green {
 		background-color: #2ca02c;
-		color: white;
 	}
 	.orange {
 		background-color: #fc7c3c;
-		color: white;
 	}
 	.wine {
 		background-color: #e55274;
-		color: white;
 	}
 	.purple {
 		background-color: #936ad1;
-		color: white;
 	}
 	.water {
 		background-color: #4a9ec2;
-		color: white;
 	}
 	.brown {
 		background-color: #a86939;
-		color: white;
 	}
-`
+`;

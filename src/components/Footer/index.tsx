@@ -1,32 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-import { BottomMessage, FooterContainer, FooterText } from './styles'
+import { BottomMessage, FooterContainer, FooterText } from './styles';
 
 const Footer: React.FC = () => (
 	<FooterContainer>
 		<FooterText>
-			<p className="large">
-				Sua <strong>sugestão</strong> é muito bem vinda, basta enviar um email
-				para <strong>lixozeroipora@gmail.com</strong>. Muito obrigado por
-				utilizar o sistema!
-			</p>
 			<p>
-				Projeto desenvolvido pelos acadêmicos do curso de Análise e
-				Desenvolvimento de Sistemas do Instituto Federal Goiano - Campus Iporá
-				em parceria com Prefeitura de Iporá, sob a supervisão da Prof. Me.
-				Luciana Recart Cardoso
-			</p>
-			<p>
-				Este é um projeto de código fonte aberto, para visualizar ou até mesmo
-				contribuir com o projeto acesse este{' '}
-				<a
-					href="https://github.com/lixozero-ipora/web"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					link
-				</a>
-				.
+				Este App Web foi desenvolvido pelos acadêmicos do curso de{' '}
+				<strong>
+					Análise e Desenvolvimento de Sistemas do Instituto Federal Goiano -
+					Campus Iporá
+				</strong>
+				, sob a supervisão da Prof. Me. Luciana Recart Cardoso.
 			</p>
 			<p>
 				Todos os ícones utilizados não foram modificados{' '}
@@ -35,12 +20,12 @@ const Footer: React.FC = () => (
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					Icones utilizados
+					(Icones utilizados)
 				</a>
 				.
 			</p>
 			<p>
-				Algumas ilustrações utilizadas foram baseadas, ou são, do projeto
+				Algumas ilustrações utilizadas foram baseadas ou são do projeto
 				Open-Source{' '}
 				<a href="https://undraw.co/" target="_blank" rel="noopener noreferrer">
 					Undraw
@@ -60,6 +45,6 @@ const Footer: React.FC = () => (
 			&copy; 2021
 		</BottomMessage>
 	</FooterContainer>
-)
+);
 
-export default Footer
+export default Footer;

@@ -1,11 +1,12 @@
-import React from 'react'
-import { EditingSchedule } from '../../@types'
-import EditScheduleItem from '../EditScheduleItem'
-import { EditScheduleListContainer } from './styles'
+import React from 'react';
+import { EditingSchedule } from '../../@types';
+import EditScheduleItem from '../EditScheduleItem';
+import { EditScheduleListContainer } from './styles';
+import { sortSchedule } from '../../utils/sortSchedule';
 
 interface EditingScheduleListProps {
-	schedules: EditingSchedule
-	onClick(id: string): void
+	schedules: EditingSchedule;
+	onClick(id: string): void;
 }
 
 const EditingScheduleList: React.FC<EditingScheduleListProps> = ({
@@ -13,7 +14,7 @@ const EditingScheduleList: React.FC<EditingScheduleListProps> = ({
 	onClick,
 }) => (
 	<EditScheduleListContainer>
-		{schedules.items.map((scheduleItem) => (
+		{schedules.items.sort(sortSchedule).map((scheduleItem) => (
 			<EditScheduleItem
 				key={scheduleItem.id}
 				id={scheduleItem.id}
@@ -27,6 +28,6 @@ const EditingScheduleList: React.FC<EditingScheduleListProps> = ({
 			/>
 		))}
 	</EditScheduleListContainer>
-)
+);
 
-export default EditingScheduleList
+export default EditingScheduleList;

@@ -1,14 +1,14 @@
-import React from 'react'
-import { Switch, Redirect } from 'react-router-dom'
+import React from 'react';
+import { Switch, Redirect } from 'react-router-dom';
 
-import Landing from '../pages/Landing'
-import Schedule from '../pages/Schedule'
-import Complaint from '../pages/Complaint'
-import About from '../pages/About'
-import Admin from '../pages/Admin'
-import Route from './Route'
-import EditSchedule from '../pages/EditSchedule'
-import ComplaintsView from '../pages/ComplaintsView'
+import Landing from '../pages/Landing';
+import Schedule from '../pages/Schedule';
+import Complaint from '../pages/Complaint';
+import About from '../pages/About';
+import Admin from '../pages/Admin';
+import Route from './Route';
+import EditSchedule from '../pages/EditSchedule';
+import ComplaintsView from '../pages/ComplaintsView';
 
 const Routes: React.FC = () => (
 	<Switch>
@@ -26,6 +26,6 @@ const Routes: React.FC = () => (
 
 		<Route path="*" Component={<Redirect to="/" />} />
 	</Switch>
-)
+);
 
-export default Routes
+export default Routes;

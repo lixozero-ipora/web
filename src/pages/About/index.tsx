@@ -1,20 +1,20 @@
-import React from 'react'
-import { MdAccountBalance } from 'react-icons/md'
+import React from 'react';
+import { MdAccountBalance } from 'react-icons/md';
 
 import {
 	Image,
 	BlurredImageContainer,
 	ContentContainer,
 	Title,
-} from '../../components/Common/styles'
-import NavBar from '../../components/Navbar'
-import ifAndCityHall from '../../assets/images/if_and_city_hall.png'
-import Footer from '../../components/Footer'
-import useScrollTop from '../../hooks/useScrollTop'
-import { AboutContent } from './styles'
+} from '../../components/Common/styles';
+import NavBar from '../../components/Navbar';
+import ifAndCityHall from '../../assets/images/if_and_city_hall.png';
+import Footer from '../../components/Footer';
+import useScrollTop from '../../hooks/useScrollTop';
+import { AboutContent } from './styles';
 
 const About: React.FC = () => {
-	useScrollTop()
+	useScrollTop();
 
 	return (
 		<>
@@ -31,113 +31,95 @@ const About: React.FC = () => {
 				</Title>
 				<AboutContent>
 					<p>
-						O projeto visa enfrentar a situação atual da não-coleta dos resíduos
-						em alguns bairros pelos coletores e caminhões e otimizar a política
-						urbana em sua cobertura, casa a casa.
+						O projeto desenvolvido teve o objetivo de auxiliar a situação de
+						não-coleta dos resíduos em alguns bairros de pequenas cidades. E com
+						isso, otimizar a política urbana na cobertura, casa à casa, de lixo.
 					</p>
 					<p>
-						O desenvolvimento do Software que fornece um meio digital para que
-						sejam feitas reclamações a respeito de irregularidades na coleta de
-						RSU da cidade, o que engloba também a disposição das datas para
-						população, assim como, informação do descarte adequado pela
-						orientação municipal.
+						O presente Software fornece um espaço digital para que datas de
+						coleta sejam visualizadas e reclamações a respeito de
+						irregularidades na coleta de RSU de uma cidade também possam ser
+						realizadas.
 					</p>
-					<p>Os desenvolvedores da aplicação:</p>
-					<ul>
-						<li>
-							João Pedro Barros Ferreira -{' '}
-							<span className="purple">
-								Gestor do desenvolvimento e Desenvolvedor Web (Front-End e
-								Back-End).
-							</span>
-						</li>
-						<li>
-							Wayrone Klaiton Luiz Silva -{' '}
-							<span className="purple">
-								Geógrafo, Documentador, Gestor de qualidade, Web Designer e
-								Requisitos.
-							</span>
-						</li>
-						<li>
-							Thiago César R. da Mata -{' '}
-							<span className="purple">Desenvolvedor Web (Front-End).</span>
-						</li>
-					</ul>
+					<p>
+						Além do mais, neste sistema, é possível obter uma orientação
+						municipal sobre a informação do descarte adequado na página inicial.
+					</p>
 
-					<p>Os colaboradores envolvidos são:</p>
+					<p>Membros da equipe:</p>
 					<ul>
 						<li>
-							Luciana Recart Cardoso -{' '}
-							<span className="magenta">
-								Cientista da Computação e Prof. Me. do Insituto Federal Goiano -
-								Campus Iporá
-							</span>
-						</li>
-						<li>
-							Viviane Specian -{' '}
-							<span className="light-blue">
-								Prof. Me, Bióloga e Vereadora da Prefeitura de Iporá
-							</span>
-						</li>
-						<li>
-							Marcelo Rodrigues Mendonça -{' '}
-							<span className="light-blue">
-								Geógrafo e Prof. Dr. do Instituto SocioAmbientais (IESA)
-							</span>
-						</li>
-						<li>
-							Guilherme E. S. Bueno -{' '}
-							<span className="light-blue">
-								Engenheiro Ambiental da Secretaria de Meio Ambiente de Iporá
-							</span>
-						</li>
-						<li>
-							Cleidney Silva -{' '}
-							<span className="light-blue">
-								Gerente da Limpeza Urbana da Secretaria de Obras de Iporá
-							</span>
-						</li>
-						<li>
-							Darlan J. A. da S. Brito -{' '}
-							<span className="light-blue">
-								Gerente dos Recursos Humanos da Secretaria de Obras de Iporá
+							Abenaya Kelly Vieira Pires -{' '}
+							<span>
+								Acadêmico(a) do 5º período do curso de Tecnologia em Análise e
+								Desenvolvimento de Sistemas
 							</span>
 						</li>
 						<li>
 							Gustavo Hiroaki Dos Santos Miwa -{' '}
-							<span className="orange">Gerente de projeto</span>
-						</li>
-						<li>
-							Abenaya Kelly Vieira Pires -{' '}
-							<span className="wine">Produtora de Cards e de EAP</span>
-						</li>
-						<li>
-							João Victor Azevedo -{' '}
-							<span className="wine">
-								Produtor de Cards e Gestor das partes interessadas
+							<span>
+								Acadêmico(a) do 5º período do curso de Tecnologia em Análise e
+								Desenvolvimento de Sistemas
 							</span>
 						</li>
 						<li>
-							Pablo Almeida de Souza -{' '}
-							<span className="water">
-								Produtor de enquetes e Gestor de riscos
+							Higor Koakovsk Pereira -{' '}
+							<span>
+								Acadêmico(a) do 5º período do curso de Tecnologia em Análise e
+								Desenvolvimento de Sistemas
+							</span>
+						</li>
+						<li>
+							João Pedro Barros Ferreira -{' '}
+							<span>
+								Acadêmico(a) do 5º período do curso de Tecnologia em Análise e
+								Desenvolvimento de Sistemas
+							</span>
+						</li>
+						<li>
+							João Victor Azevedo -{' '}
+							<span>
+								Acadêmico(a) do 5º período do curso de Tecnologia em Análise e
+								Desenvolvimento de Sistemas
 							</span>
 						</li>
 						<li>
 							Leonardo Rodrigues Silva -{' '}
-							<span className="water">
-								Gestor das mídias sociais, Enquetes e Orçamento
+							<span>
+								Acadêmico(a) do 5º período do curso de Tecnologia em Análise e
+								Desenvolvimento de Sistemas
 							</span>
 						</li>
 						<li>
-							Higor Koakovsk Pereira - <span className="brown">Designer</span>
+							Luciana Recart Cardoso - <span>Coordenadora do projeto</span>
+						</li>
+						<li>
+							Pablo Almeida de Souza -{' '}
+							<span>
+								Acadêmico(a) do 5º período do curso de Tecnologia em Análise e
+								Desenvolvimento de Sistemas
+							</span>
+						</li>
+						<li>
+							Thiago César R. da Mata -{' '}
+							<span>
+								Acadêmico(a) do 5º período do curso de Tecnologia em Análise e
+								Desenvolvimento de Sistemas
+							</span>
+						</li>
+						<li>
+							Wayrone Klaiton Luiz Silva -{' '}
+							<span>
+								Acadêmico(a) do 5º período do curso de Tecnologia em Análise e
+								Desenvolvimento de Sistemas
+							</span>
 						</li>
 					</ul>
 				</AboutContent>
 			</ContentContainer>
 			<Footer />
 		</>
-	)
-}
+	);
+};
 
-export default About
+export default About;

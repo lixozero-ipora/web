@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const CitizenInfoComponent = styled.div`
 	display: flex;
@@ -27,7 +27,7 @@ export const CitizenInfoComponent = styled.div`
 			color: ${(props) => props.color};
 		}
 	}
-`
+`;
 
 export const SolvedButton = styled.button`
 	display: block;
@@ -42,4 +42,4 @@ export const SolvedButton = styled.button`
 		color: white;
 		background-color: ${(props) => props.color};
 	}
-`
+`;

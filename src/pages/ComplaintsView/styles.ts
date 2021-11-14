@@ -1,11 +1,11 @@
-import styled from 'styled-components'
-import { ButtonOutline } from '../../components/Common/styles'
-import { LoadingMessage } from '../../components/Loading/styles'
+import styled from 'styled-components';
+import { ButtonOutline } from '../../components/Common/styles';
+import { LoadingMessage } from '../../components/Loading/styles';
 
 export const ComplaintsViewContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
-`
+`;
 
 export const MapBoxContainer = styled.div`
 	width: 75%;
@@ -34,14 +34,14 @@ export const MapBoxContainer = styled.div`
 		display: flex;
 		justify-content: center;
 	}
-`
+`;
 
 export const ComplaintMessage = styled.p`
 	text-align: center;
 	background-color: white;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 	color: ${(props) => props.color};
-`
+`;
 
 export const ComplaintsBoxContainer = styled.section`
 	width: 35%;
@@ -63,7 +63,7 @@ export const ComplaintsBoxContainer = styled.section`
 		display: block;
 		margin: 20px auto;
 	}
-`
+`;
 
 export const ComplaintInfo = styled.div`
 	display: flex;
@@ -89,4 +89,4 @@ export const ComplaintInfo = styled.div`
 	strong.red {
 		color: var(--color-orange);
 	}
-`
+`;

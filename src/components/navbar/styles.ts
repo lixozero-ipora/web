@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const MenuLink = styled(Link)`
 	padding: 1rem 2rem;
@@ -21,7 +21,7 @@ export const MenuLink = styled(Link)`
 		border: 1px solid white;
 		border-radius: 20px;
 	}
-`
+`;
 
 export const Nav = styled.div`
 	height: 90px;
@@ -32,7 +32,7 @@ export const Nav = styled.div`
 	flex-wrap: wrap;
 	background: var(--color-green);
 	z-index: 2;
-`
+`;
 
 export const Logo = styled.div`
 	display: flex;
@@ -43,7 +43,7 @@ export const Logo = styled.div`
 		height: 90px;
 		margin-right: 10px;
 	}
-`
+`;
 
 export const Menu = styled.div<{ isOpen: boolean }>`
 	display: flex;
@@ -62,7 +62,7 @@ export const Menu = styled.div<{ isOpen: boolean }>`
 		border-bottom-left-radius: 20px;
 		width: 100%;
 	}
-`
+`;
 
 export const Hamburger = styled.div`
 	display: none;
@@ -81,7 +81,7 @@ export const Hamburger = styled.div`
 	@media (max-width: 992px) {
 		display: flex;
 	}
-`
+`;
 
 export const Search = styled.div`
 	display: flex;
@@ -111,7 +111,7 @@ export const Search = styled.div`
 	@media screen and (max-width: 1085px) {
 		display: none;
 	}
-`
+`;
 
 export const ButtonCad = styled.button`
 	border-style: none;
@@ -127,4 +127,4 @@ export const ButtonCad = styled.button`
 		color: #fff;
 		font-weight: bold;
 	}
-`
+`;

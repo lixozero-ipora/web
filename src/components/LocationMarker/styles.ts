@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const GetMyLocationContainer = styled.div`
 	display: flex;
@@ -16,4 +16,4 @@ export const GetMyLocationContainer = styled.div`
 	@media (max-width: 768px) {
 		width: 80%;
 	}
-`
+`;

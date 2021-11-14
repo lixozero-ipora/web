@@ -1,12 +1,12 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 interface LabelTextProps {
-	active: boolean
-	color: string
+	active: boolean;
+	color: string;
 }
 
 interface InputElementProps {
-	borderColor: string
+	borderColor: string;
 }
 
 export const InputContainer = styled.label`
@@ -14,7 +14,7 @@ export const InputContainer = styled.label`
 	flex-direction: column;
 	position: relative;
 	margin-top: 27px;
-`
+`;
 
 export const LabelText = styled.span<LabelTextProps>`
 	position: absolute;
@@ -29,13 +29,13 @@ export const LabelText = styled.span<LabelTextProps>`
 			return css`
 				color: ${props.color};
 				top: -23px;
-			`
+			`;
 		}
 		return css`
 			top: 5px;
-		`
+		`;
 	}}
-`
+`;
 
 export const InputElement = styled.input<InputElementProps>`
 	padding: 7px 10px;
@@ -45,4 +45,4 @@ export const InputElement = styled.input<InputElementProps>`
 	border-radius: 10px;
 	border: 1px solid ${(props) => props.borderColor};
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-`
+`;

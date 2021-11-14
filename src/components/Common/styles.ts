@@ -1,12 +1,12 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 interface ButtonOutlineProps {
-	theme?: string
+	theme?: string;
 }
 
 export const Container = styled.div`
 	padding: 20px 30px;
-`
+`;
 
 export const ButtonOutline = styled.button<ButtonOutlineProps>`
 	border: 2px solid var(--color-green);
@@ -27,7 +27,7 @@ export const ButtonOutline = styled.button<ButtonOutlineProps>`
 		display: block;
 		width: 100%;
 	}
-`
+`;
 export const Button = styled.button`
 	background-color: var(--color-green);
 	border: none;
@@ -46,24 +46,31 @@ export const Button = styled.button`
 		display: block;
 		width: 100%;
 	}
-`
+`;
 
 export const BlurredImageContainer = styled.div`
 	height: 50vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+
 	overflow: hidden;
 
 	@media (max-width: 768px) {
 		height: 30vh;
 	}
-`
+`;
 
 export const Image = styled.img`
 	margin: 20px 0;
-	width: 100%;
 	height: 100%;
+	border-radius: 20px;
+
 	object-fit: contain;
 	z-index: -5;
-`
+`;
 
 export const Title = styled.h1`
 	display: flex;
@@ -77,21 +84,21 @@ export const Title = styled.h1`
 		margin-right: 10px;
 		display: flex;
 	}
-`
+`;
 
 export const AuthorInfo = styled.strong`
 	font-size: 1.6rem;
-`
+`;
 
 export const LastEdited = styled.span`
 	font-size: 1.6rem;
-`
+`;
 
 export const InfoContainer = styled.div`
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-`
+`;
 
 export const ContentContainer = styled.div`
 	width: 70%;
@@ -101,7 +108,7 @@ export const ContentContainer = styled.div`
 	@media (max-width: 768px) {
 		width: 90%;
 	}
-`
+`;
 
 export const ContentText = styled.div`
 	margin-top: 3rem;
@@ -116,7 +123,7 @@ export const ContentText = styled.div`
 			margin-left: 20px;
 		}
 	}
-`
+`;
 
 export const CardWithBrandThreeTexts = styled.div`
 	display: flex;
@@ -152,4 +159,4 @@ export const CardWithBrandThreeTexts = styled.div`
 			width: 100%;
 		}
 	}
-`
+`;

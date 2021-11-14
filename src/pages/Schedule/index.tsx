@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { MdDateRange } from 'react-icons/md'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { MdDateRange } from 'react-icons/md';
 
 import {
 	Image,
@@ -10,22 +10,23 @@ import {
 	InfoContainer,
 	LastEdited,
 	Title,
-} from '../../components/Common/styles'
-import NavBar from '../../components/Navbar'
-import girlLikeImage from '../../assets/images/schedule_date.svg'
-import Footer from '../../components/Footer'
-import { ScheduleContainer, Table, TableHead, TableItem } from './styles'
-import useScrollTop from '../../hooks/useScrollTop'
-import useGetSchedules from '../../hooks/useGetSchedules'
-import Loading from '../../components/Loading'
+} from '../../components/Common/styles';
+import NavBar from '../../components/Navbar';
+import girlLikeImage from '../../assets/images/schedule_date.svg';
+import Footer from '../../components/Footer';
+import { ScheduleContainer, Table, TableHead, TableItem } from './styles';
+import useScrollTop from '../../hooks/useScrollTop';
+import useGetSchedules from '../../hooks/useGetSchedules';
+import Loading from '../../components/Loading';
+import { sortSchedule } from '../../utils/sortSchedule';
 
 const Schedule: React.FC = () => {
-	const [schedules, isScheduleLoading] = useGetSchedules()
+	const [schedules, isScheduleLoading] = useGetSchedules();
 
-	useScrollTop()
+	useScrollTop();
 
 	const updatedAt =
-		schedules.length > 1 ? new Date(schedules[0].updated_at) : null
+		schedules.length > 1 ? new Date(schedules[0].updated_at) : null;
 
 	return (
 		<>
@@ -59,8 +60,10 @@ const Schedule: React.FC = () => {
 						<Link to="/denuncia">reclame aqui</Link>.
 					</p>
 					<p>
-						A seguir, constam os bairros conforme as datas definidas para a
-						coleta.
+						Aqui você visualiza as datas de coleta urbana por bairro de sua
+						cidade. Sua prefeitura deve dispor de datas semanais ou mensais,
+						definidas por um cronograma aprovado para serem executadas. Clique
+						no botão para ver estas datas.
 					</p>
 				</ContentText>
 				<ScheduleContainer>
@@ -71,7 +74,7 @@ const Schedule: React.FC = () => {
 							<p>Fim da coleta</p>
 						</TableHead>
 						{isScheduleLoading && <Loading />}
-						{schedules.map((schedule) => (
+						{schedules.sort(sortSchedule).map((schedule) => (
 							<TableItem data-aos="fade-left" key={schedule.id}>
 								<p>{schedule.neighborhood}</p>
 								<p>{schedule.start}</p>
@@ -83,7 +86,7 @@ const Schedule: React.FC = () => {
 			</ContentContainer>
 			<Footer />
 		</>
-	)
-}
+	);
+};
 
-export default Schedule
+export default Schedule;

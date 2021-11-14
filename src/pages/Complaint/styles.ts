@@ -1,16 +1,16 @@
-import styled, { css } from 'styled-components'
-import { InputContainer } from '../../components/AnimatedInputText/styles'
-import { CardWithBrandThreeTexts } from '../../components/Common/styles'
+import styled, { css } from 'styled-components';
+import { InputContainer } from '../../components/AnimatedInputText/styles';
+import { CardWithBrandThreeTexts } from '../../components/Common/styles';
 
 interface ComplaintButtonProps {
-	isValid?: boolean
+	isValid?: boolean;
 }
 
 interface ToBlurProps {
-	isBlurred: boolean
+	isBlurred: boolean;
 }
 
-export const ComplaintStep = styled(CardWithBrandThreeTexts)``
+export const ComplaintStep = styled(CardWithBrandThreeTexts)``;
 
 export const ComplaintMapContainer = styled.div`
 	width: 100%;
@@ -20,7 +20,7 @@ export const ComplaintMapContainer = styled.div`
 
 	overflow: hidden;
 	margin-top: 27px;
-`
+`;
 
 export const ComplaintContentContainer = styled.div`
 	width: 70%;
@@ -54,7 +54,7 @@ export const ComplaintContentContainer = styled.div`
 			width: 100%;
 		}
 	}
-`
+`;
 
 export const AddressInfoContainer = styled.div`
 	display: flex;
@@ -118,7 +118,7 @@ export const AddressInfoContainer = styled.div`
 	@media (max-width: 360px) {
 		padding-top: 25px !important;
 	}
-`
+`;
 
 export const LoadingBoxContainer = styled.div`
 	position: absolute;
@@ -140,7 +140,7 @@ export const LoadingBoxContainer = styled.div`
 		background-color: white;
 		border-radius: 10px;
 	}
-`
+`;
 
 export const ToBlur = styled.div<ToBlurProps>`
 	transition: all ease 500ms;
@@ -149,12 +149,12 @@ export const ToBlur = styled.div<ToBlurProps>`
 			return css`
 				filter: blur(9px);
 				pointer-events: none;
-			`
+			`;
 		}
 
-		return css``
+		return css``;
 	}}
-`
+`;
 
 export const ComplaintButton = styled.button<ComplaintButtonProps>`
 	width: 100%;
@@ -173,11 +173,11 @@ export const ComplaintButton = styled.button<ComplaintButtonProps>`
 			return css`
 				background-color: var(--color-green);
 				color: #fff;
-			`
+			`;
 		}
 		return css`
 			background-color: #909090;
 			color: var(--color-text-dark);
-		`
+		`;
 	}}
-`
+`;

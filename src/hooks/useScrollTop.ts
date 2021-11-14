@@ -1,12 +1,12 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 
 const useScrollTop = (): void => {
 	useEffect(() => {
 		window.scroll({
 			top: 0,
 			behavior: 'smooth',
-		})
-	}, [])
-}
+		});
+	}, []);
+};
 
-export default useScrollTop
+export default useScrollTop;

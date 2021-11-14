@@ -34,7 +34,7 @@
 		"react/prop-types": "off",
 		"jsx-a11y/label-has-associated-control": "off",
 		"dot-notation": "off",
-		"camelcase": "warn",
+		"camelcase": "off",
 		"@typescript-eslint/no-use-before-define": [
 			"error",
 			{ "functions": false, "variables": false }
@@ -45,6 +45,7 @@
 			"node": {
 				"extensions": [".js", ".jsx", ".ts", ".tsx"]
 			}
-		}
+		},
+		"camelcase": "off"
 	}
 }

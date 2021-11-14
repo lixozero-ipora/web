@@ -1,5 +1,5 @@
-import React from 'react'
-import { ButtonOutline } from '../Common/styles'
+import React from 'react';
+import { ButtonOutline } from '../Common/styles';
 import {
 	ButtonContainer,
 	PostContainer,
@@ -7,16 +7,16 @@ import {
 	PostImage,
 	PostText,
 	PostTitle,
-} from './styled'
+} from './styled';
 
 interface PostProps {
-	title: string
-	text: string
-	image: string
-	preventAnimation?: boolean
-	titleIcon?: React.ReactElement
-	showReadMore?: boolean
-	onReadMore?: () => void
+	title: string;
+	text: string;
+	image: string;
+	preventAnimation?: boolean;
+	titleIcon?: React.ReactElement;
+	showReadMore?: boolean;
+	onReadMore?: () => void;
 }
 
 const Post: React.FC<PostProps> = ({
@@ -43,6 +43,6 @@ const Post: React.FC<PostProps> = ({
 			)}
 		</PostContent>
 	</PostContainer>
-)
+);
 
-export default Post
+export default Post;

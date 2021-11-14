@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const MapButton = styled.button`
 	height: 20px;
@@ -9,4 +9,4 @@ export const MapButton = styled.button`
 		height: 20px;
 		z-index: 2;
 	}
-`
+`;

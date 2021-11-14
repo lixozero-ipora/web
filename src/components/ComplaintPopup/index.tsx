@@ -1,15 +1,15 @@
-import React from 'react'
-import { Marker, Popup } from 'react-leaflet'
+import React from 'react';
+import { Marker, Popup } from 'react-leaflet';
 
-import mapIcon from '../../utils/mapIcon'
-import { MapButton } from './styles'
+import mapIcon from '../../utils/mapIcon';
+import { MapButton } from './styles';
 
 interface ComplaintPopupProps {
-	id: string
-	latitude: number
-	longitude: number
-	mapIconColor?: 'red' | 'green'
-	onClick: (id: string) => void
+	id: string;
+	latitude: number;
+	longitude: number;
+	mapIconColor?: 'red' | 'green';
+	onClick: (id: string) => void;
 }
 
 const ComplaintPopup: React.FC<ComplaintPopupProps> = ({
@@ -20,8 +20,8 @@ const ComplaintPopup: React.FC<ComplaintPopupProps> = ({
 	onClick,
 }) => {
 	const handleClick = () => {
-		onClick(id)
-	}
+		onClick(id);
+	};
 
 	return (
 		<Marker icon={mapIcon[mapIconColor]} position={[latitude, longitude]}>
@@ -35,7 +35,7 @@ const ComplaintPopup: React.FC<ComplaintPopupProps> = ({
 				</MapButton>
 			</Popup>
 		</Marker>
-	)
-}
+	);
+};
 
-export default ComplaintPopup
+export default ComplaintPopup;

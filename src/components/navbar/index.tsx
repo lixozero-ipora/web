@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Nav, Logo, Hamburger, Menu, MenuLink } from './styles'
-import logo from '../../assets/images/recycling.svg'
-import { useAuth } from '../../store/authContext'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Nav, Logo, Hamburger, Menu, MenuLink } from './styles';
+import logo from '../../assets/images/recycling.svg';
+import { useAuth } from '../../store/authContext';
 
 const NavBar: React.FC = () => {
-	const [isOpen, setIsOpen] = useState<boolean>(false)
-	const { isLogedIn } = useAuth()
+	const [isOpen, setIsOpen] = useState<boolean>(false);
+	const { isLogedIn } = useAuth();
 	return (
 		<Nav data-aos="fade-down">
 			<Link to="/">
@@ -23,9 +23,9 @@ const NavBar: React.FC = () => {
 				{isLogedIn ? (
 					<>
 						<MenuLink to="/">Página inicial</MenuLink>
-						<MenuLink to="/gerenciar-datas">Gerenciar datas</MenuLink>
+						<MenuLink to="/gerenciar-datas">Gerencie Datas de Coleta</MenuLink>
 						<MenuLink to="/gerenciar-reclamacoes">
-							Gerenciar reclamações
+							Gerencie Reclamações
 						</MenuLink>
 					</>
 				) : (
@@ -37,7 +37,7 @@ const NavBar: React.FC = () => {
 				)}
 			</Menu>
 		</Nav>
-	)
-}
+	);
+};
 
-export default NavBar
+export default NavBar;

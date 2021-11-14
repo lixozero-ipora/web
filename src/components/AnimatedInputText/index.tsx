@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import { InputContainer, InputElement, LabelText } from './styles'
+import React, { useState, useEffect } from 'react';
+import { InputContainer, InputElement, LabelText } from './styles';
 
 interface AnimatedInputTextProps {
-	label: string
-	value: string
-	type?: string
-	themeColor?: string
-	stayUp?: boolean
-	onChange: (value: string) => void
+	label: string;
+	value: string;
+	type?: string;
+	themeColor?: string;
+	stayUp?: boolean;
+	onChange: (value: string) => void;
 }
 
 const AnimatedInputText: React.FC<AnimatedInputTextProps> = ({
@@ -18,27 +18,27 @@ const AnimatedInputText: React.FC<AnimatedInputTextProps> = ({
 	stayUp,
 	onChange,
 }) => {
-	const [isActive, setIsActive] = useState(false)
+	const [isActive, setIsActive] = useState(false);
 
 	useEffect(() => {
 		if (value && !isActive) {
-			setIsActive(true)
+			setIsActive(true);
 		}
-	}, [value])
+	}, [value]);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		onChange(event.target.value)
-	}
+		onChange(event.target.value);
+	};
 
 	const handleOnFocus = () => {
-		setIsActive(true)
-	}
+		setIsActive(true);
+	};
 
 	const handleOnBlur = () => {
 		if (!value) {
-			setIsActive(false)
+			setIsActive(false);
 		}
-	}
+	};
 
 	return (
 		<InputContainer>
@@ -57,7 +57,7 @@ const AnimatedInputText: React.FC<AnimatedInputTextProps> = ({
 				value={value}
 			/>
 		</InputContainer>
-	)
-}
+	);
+};
 
-export default AnimatedInputText
+export default AnimatedInputText;

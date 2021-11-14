@@ -1,76 +1,76 @@
-import React, { useState, useEffect } from 'react'
-import { MapContainer, TileLayer } from 'react-leaflet'
-import swal from 'sweetalert'
-import { Complaint } from '../../@types'
-import CitizenInfo from '../../components/CitizenInfo'
-import { ButtonOutline } from '../../components/Common/styles'
-import ComplaintPopup from '../../components/ComplaintPopup'
-import Loading from '../../components/Loading'
-import NavBar from '../../components/Navbar'
-import api from '../../services/api'
+import React, { useState, useEffect } from 'react';
+import { MapContainer, TileLayer } from 'react-leaflet';
+import swal from 'sweetalert';
+import { Complaint } from '../../@types';
+import CitizenInfo from '../../components/CitizenInfo';
+import { ButtonOutline } from '../../components/Common/styles';
+import ComplaintPopup from '../../components/ComplaintPopup';
+import Loading from '../../components/Loading';
+import NavBar from '../../components/Navbar';
+import api from '../../services/api';
 import {
 	ComplaintInfo,
 	ComplaintMessage,
 	ComplaintsBoxContainer,
 	ComplaintsViewContainer,
 	MapBoxContainer,
-} from './styles'
+} from './styles';
 
 interface Complaints {
-	showing: Complaint
-	items: Complaint[]
+	showing: Complaint;
+	items: Complaint[];
 }
 
 const ComplaintsView: React.FC = () => {
 	const [complaints, setComplaints] = useState<Complaints>({
 		showing: {} as Complaint,
 		items: [],
-	})
-	const [isLoading, setIsLoading] = useState(true)
-	const [showSolved, setShowSolved] = useState(false)
+	});
+	const [isLoading, setIsLoading] = useState(true);
+	const [showSolved, setShowSolved] = useState(false);
 
 	useEffect(() => {
-		getComplaints()
-	}, [])
+		getComplaints();
+	}, []);
 
 	const getComplaints = async () => {
 		try {
-			const response = await api.get<Array<Complaint>>('/complaints')
-			setComplaints((prevState) => ({ ...prevState, items: response.data }))
+			const response = await api.get<Array<Complaint>>('/complaints');
+			setComplaints((prevState) => ({ ...prevState, items: response.data }));
 		} catch (error) {
 			swal(
 				'Occoreu um erro',
 				'Não conseguimos carregar as reclamações, tente novamente mais tarde',
 				'error'
-			)
+			);
 		} finally {
-			setIsLoading(false)
+			setIsLoading(false);
 		}
-	}
+	};
 
 	const handleChangeComplaintShowing = (id: string) => {
-		const newShowing = complaints.items.find((item) => item.id === id)
+		const newShowing = complaints.items.find((item) => item.id === id);
 
 		if (!newShowing) {
-			return
+			return;
 		}
 
 		setComplaints((prevState) => ({
 			...prevState,
 			showing: newShowing,
-		}))
-	}
+		}));
+	};
 
 	const handleShowSolved = () => {
-		setShowSolved((prevState) => !prevState)
-	}
+		setShowSolved((prevState) => !prevState);
+	};
 
 	const handleSolveComplaint = async (
 		index: number,
 		whatsapp: string,
 		unsolve?: boolean
 	) => {
-		swal('Alterando a reclamação...', '', 'info')
+		swal('Alterando a reclamação...', '', 'info');
 		try {
 			const newComplaint = await api.put(
 				`/complaints/${complaints.showing.id}/${unsolve ? 'unsolve' : ''}`,
@@ -78,46 +78,46 @@ const ComplaintsView: React.FC = () => {
 					solvedIndex: index,
 					whatsapp,
 				}
-			)
+			);
 
 			if (
 				newComplaint.data.has_active_complaints !==
 				complaints.showing.has_active_complaints
 			) {
-				getComplaints()
+				getComplaints();
 			}
 
 			setComplaints((prevState) => {
 				return {
 					...prevState,
 					showing: newComplaint.data,
-				}
-			})
-			swal('Reclamação alterada!', '', 'success')
+				};
+			});
+			swal('Reclamação alterada!', '', 'success');
 		} catch (error) {
 			swal(
 				'Erro ao resolver reclamação',
 				'Nossas máquinas no momento não conseguiram resolver essa reclamação, tente mais tarde.',
 				'error'
-			)
+			);
 		}
-	}
+	};
 
 	const handleGenerateReport = async () => {
-		const report = await api.get('/reports', { responseType: 'blob' })
+		const report = await api.get('/reports', { responseType: 'blob' });
 
-		const blobURL = URL.createObjectURL(new Blob([report.data]))
-		const link = document.createElement('a')
-		link.href = blobURL
+		const blobURL = URL.createObjectURL(new Blob([report.data]));
+		const link = document.createElement('a');
+		link.href = blobURL;
 		link.setAttribute(
 			'download',
 			`relatorio_${new Date().toLocaleDateString()}.xlsx`
-		)
-		link.style.display = 'none'
-		document.body.appendChild(link)
-		link.click()
-		link.remove()
-	}
+		);
+		link.style.display = 'none';
+		document.body.appendChild(link);
+		link.click();
+		link.remove();
+	};
 
 	return (
 		<>
@@ -156,7 +156,7 @@ const ComplaintsView: React.FC = () => {
 										}
 										onClick={handleChangeComplaintShowing}
 									/>
-								)
+								);
 							})}
 					</MapContainer>
 				</MapBoxContainer>
@@ -243,7 +243,7 @@ const ComplaintsView: React.FC = () => {
 				</ComplaintsBoxContainer>
 			</ComplaintsViewContainer>
 		</>
-	)
-}
+	);
+};
 
-export default ComplaintsView
+export default ComplaintsView;

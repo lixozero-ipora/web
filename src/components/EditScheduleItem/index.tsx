@@ -1,10 +1,14 @@
-import React from 'react'
-import { ScheduleItem } from '../../@types'
-import { ActionButton, EditItemInfo, EditScheduleItemContainer } from './styles'
+import React from 'react';
+import { ScheduleItem } from '../../@types';
+import {
+	ActionButton,
+	EditItemInfo,
+	EditScheduleItemContainer,
+} from './styles';
 
 interface EditScheduleItemProps extends ScheduleItem {
-	isActive: boolean
-	onClickAction(id: string): void
+	isActive: boolean;
+	onClickAction(id: string): void;
 }
 
 const EditScheduleItem: React.FC<EditScheduleItemProps> = ({
@@ -16,8 +20,8 @@ const EditScheduleItem: React.FC<EditScheduleItemProps> = ({
 	onClickAction,
 }) => {
 	const handleChangeActive = () => {
-		onClickAction(id)
-	}
+		onClickAction(id);
+	};
 
 	return (
 		<EditScheduleItemContainer>
@@ -32,7 +36,7 @@ const EditScheduleItem: React.FC<EditScheduleItemProps> = ({
 				<span>{end}</span>
 			</EditItemInfo>
 		</EditScheduleItemContainer>
-	)
-}
+	);
+};
 
-export default EditScheduleItem
+export default EditScheduleItem;

@@ -1,10 +1,10 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const InfoContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-`
+`;
 
 export const ScheduleContainer = styled.div`
 	display: flex;
@@ -14,12 +14,12 @@ export const ScheduleContainer = styled.div`
 
 	background-color: white;
 	border-radius: 10px;
-`
+`;
 
 export const Table = styled.div`
 	display: flex;
 	flex-direction: column;
-`
+`;
 export const TableItem = styled.div`
 	display: flex;
 	flex-wrap: nowrap;
@@ -52,9 +52,9 @@ export const TableItem = styled.div`
 			flex: 1;
 		}
 	}
-`
+`;
 
 export const TableHead = styled(TableItem)`
 	font-weight: bold;
 	border-width: 3px;
-`
+`;

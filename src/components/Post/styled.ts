@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const PostContainer = styled.div`
 	display: flex;
@@ -8,7 +8,7 @@ export const PostContainer = styled.div`
 	@media (max-width: 768px) {
 		flex-direction: column;
 	}
-`
+`;
 
 export const PostImage = styled.img`
 	background-color: white;
@@ -28,7 +28,7 @@ export const PostImage = styled.img`
 		border-bottom-right-radius: 0;
 		border-bottom-left-radius: 0;
 	}
-`
+`;
 
 export const PostContent = styled.div`
 	color: var(--color-text-dark);
@@ -47,7 +47,7 @@ export const PostContent = styled.div`
 		border-top-left-radius: 0;
 		margin: 0;
 	}
-`
+`;
 
 export const PostTitle = styled.strong`
 	font-size: 4rem;
@@ -59,14 +59,14 @@ export const PostTitle = styled.strong`
 		display: flex;
 		margin-right: 10px;
 	}
-`
+`;
 
 export const PostText = styled.p`
 	font-size: 2rem;
 	overflow: hidden;
-`
+`;
 
 export const ButtonContainer = styled.div`
 	display: flex;
 	justify-content: flex-end;
-`
+`;

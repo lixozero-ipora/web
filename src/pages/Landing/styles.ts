@@ -1,10 +1,10 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 interface ImageContatinerProps {
-	whiteBg?: boolean
+	whiteBg?: boolean;
 }
 
-export const LadingContainer = styled.div``
+export const LadingContainer = styled.div``;
 
 export const SliderContainer = styled.div`
 	margin-top: 20px;
@@ -13,14 +13,14 @@ export const SliderContainer = styled.div`
 	@media (max-width: 768px) {
 		display: none;
 	}
-`
+`;
 
 export const ImageContainer = styled.div<ImageContatinerProps>`
 	background-color: ${(props) => (props.whiteBg ? 'white' : 'none')};
 
 	overflow: hidden;
 	height: 60vh;
-`
+`;
 
 export const LandingImage = styled.img`
 	height: 100%;
@@ -36,8 +36,8 @@ export const LandingImage = styled.img`
 		width: 70%;
 		height: 90%;
 	}
-`
+`;
 
 export const ContentContainer = styled.div`
 	padding: 20px;
-`
+`;

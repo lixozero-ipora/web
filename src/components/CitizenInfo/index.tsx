@@ -1,16 +1,16 @@
-import React from 'react'
-import { IoLogoWhatsapp } from 'react-icons/io'
-import { ComplaintRegistry } from '../../@types'
-import { CitizenInfoComponent, SolvedButton } from './styles'
+import React from 'react';
+import { IoLogoWhatsapp } from 'react-icons/io';
+import { ComplaintRegistry } from '../../@types';
+import { CitizenInfoComponent, SolvedButton } from './styles';
 
 interface CitizenInfoProps extends ComplaintRegistry {
-	index: number
-	color?: string
-	showButton?: boolean
-	buttonText?: string
-	buttonColor?: string
-	unsolve?: boolean
-	buttonOnClick?: (index: number, whatsapp: string, unsolve?: boolean) => void
+	index: number;
+	color?: string;
+	showButton?: boolean;
+	buttonText?: string;
+	buttonColor?: string;
+	unsolve?: boolean;
+	buttonOnClick?: (index: number, whatsapp: string, unsolve?: boolean) => void;
 }
 
 const CitizenInfo: React.FC<CitizenInfoProps> = ({
@@ -31,9 +31,9 @@ const CitizenInfo: React.FC<CitizenInfoProps> = ({
 }) => {
 	const handleClick = () => {
 		if (buttonOnClick) {
-			buttonOnClick(index, whatsapp, unsolve)
+			buttonOnClick(index, whatsapp, unsolve);
 		}
-	}
+	};
 
 	return (
 		<CitizenInfoComponent color={color}>
@@ -86,6 +86,6 @@ const CitizenInfo: React.FC<CitizenInfoProps> = ({
 				</SolvedButton>
 			)}
 		</CitizenInfoComponent>
-	)
-}
-export default CitizenInfo
+	);
+};
+export default CitizenInfo;

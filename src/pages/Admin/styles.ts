@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { ButtonOutline } from '../../components/Common/styles'
+import styled from 'styled-components';
+import { ButtonOutline } from '../../components/Common/styles';
 
 export const AdminContainer = styled.div`
 	width: 90%;
@@ -25,4 +25,4 @@ export const AdminContainer = styled.div`
 			margin-top: 10px;
 		}
 	}
-`
+`;

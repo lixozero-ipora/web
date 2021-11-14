@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 interface ActionButtonProps {
-	isActive: boolean
+	isActive: boolean;
 }
 
 export const EditScheduleItemContainer = styled.div`
@@ -12,7 +12,7 @@ export const EditScheduleItemContainer = styled.div`
 	margin: 10px 0;
 	border-radius: 10px;
 	overflow: hidden;
-`
+`;
 
 export const ActionButton = styled.div<ActionButtonProps>`
 	width: 10%;
@@ -36,7 +36,7 @@ export const ActionButton = styled.div<ActionButtonProps>`
 		color: white;
 		text-transform: capitalize;
 	}
-`
+`;
 
 export const EditItemInfo = styled.div`
 	width: 90%;
@@ -70,4 +70,4 @@ export const EditItemInfo = styled.div`
 	span:nth-child(3) {
 		background-color: var(--color-orange);
 	}
-`
+`;

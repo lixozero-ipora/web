@@ -1,8 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" prefix="og: https://ogp.me/ns#">
 	<head>
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-4CD6BRKPN3"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+			gtag('config', 'G-4CD6BRKPN3');
+		</script>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			name="description"
+			content="Projeto criado durante um período do curso de Análise e Desenvolvimento de Sistemas no Instituto Federal Goiano Campus Iporá."
+		/>
+		<meta property="og:image:height" content="300" />
+		<meta property="og:image:width" content="400" />
+		<meta property="og:title" content="Lixo Zero Iporá" />
+		<meta property="og:url" content="https://lixozero-ipora.github.io/web/" />
+		<meta property="og:image" content="%PUBLIC_URL%/ogmeta.png" />
+		<meta property="og:locale" content="pt_BR" />
+		<meta property="og:type" content="website" />
+		<link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon.png" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -12,7 +36,7 @@
 
 		<title>Lixo Zero Iporá</title>
 	</head>
-	<body>
+	<body id="body">
 		<noscript>You need to enable JavaScript to run this app.</noscript>
 		<div id="root"></div>
 	</body>

@@ -1,9 +1,9 @@
-import React from 'react'
-import { LoadingContainer, LoadingElement, LoadingMessage } from './styles'
+import React from 'react';
+import { LoadingContainer, LoadingElement, LoadingMessage } from './styles';
 
 interface LoadingProps {
-	message?: string
-	size?: 'normal' | 'large'
+	message?: string;
+	size?: 'normal' | 'large';
 }
 
 const Loading: React.FC<LoadingProps> = ({ message, size = 'normal' }) => (
@@ -13,6 +13,6 @@ const Loading: React.FC<LoadingProps> = ({ message, size = 'normal' }) => (
 		</LoadingMessage>
 		<LoadingElement size={size} />
 	</LoadingContainer>
-)
+);
 
-export default Loading
+export default Loading;

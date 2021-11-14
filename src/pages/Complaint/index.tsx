@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import { MapContainer, TileLayer } from 'react-leaflet'
-import { LeafletMouseEvent, LocationEvent } from 'leaflet'
-import { BsPencilSquare } from 'react-icons/bs'
-import { SiOpenstreetmap } from 'react-icons/si'
-import swal from 'sweetalert'
-import { MdHearing } from 'react-icons/md'
-import * as yup from 'yup'
-import { toast } from 'react-toastify'
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { MapContainer, TileLayer } from 'react-leaflet';
+import { LeafletMouseEvent, LocationEvent } from 'leaflet';
+import { BsPencilSquare } from 'react-icons/bs';
+import { SiOpenstreetmap } from 'react-icons/si';
+import swal from 'sweetalert';
+import { MdHearing } from 'react-icons/md';
+import * as yup from 'yup';
+import { toast } from 'react-toastify';
 
-import NavBar from '../../components/Navbar'
+import NavBar from '../../components/Navbar';
 import {
 	AddressInfoContainer,
 	ComplaintButton,
@@ -18,42 +18,42 @@ import {
 	ComplaintStep,
 	LoadingBoxContainer,
 	ToBlur,
-} from './styles'
+} from './styles';
 import {
 	BlurredImageContainer,
 	ContentContainer,
 	ContentText,
 	Image,
 	Title,
-} from '../../components/Common/styles'
-import complaintSVG from '../../assets/images/complaint.svg'
-import LocationMarker from '../../components/LocationMarker'
-import useScrollTop from '../../hooks/useScrollTop'
-import Footer from '../../components/Footer'
-import AnimatedInputText from '../../components/AnimatedInputText'
-import alreadyComplainedCheck from '../../utils/alreadyComplainedCheck'
-import api from '../../services/api'
-import Loading from '../../components/Loading'
-import iporaNeighborhoods from '../../assets/iporaNeighborhoods.json'
+} from '../../components/Common/styles';
+import complaintSVG from '../../assets/images/complaint.svg';
+import LocationMarker from '../../components/LocationMarker';
+import useScrollTop from '../../hooks/useScrollTop';
+import Footer from '../../components/Footer';
+import AnimatedInputText from '../../components/AnimatedInputText';
+import alreadyComplainedCheck from '../../utils/alreadyComplainedCheck';
+import api from '../../services/api';
+import Loading from '../../components/Loading';
+import iporaNeighborhoods from '../../assets/iporaNeighborhoods.json';
 
 const Complaint: React.FC = () => {
-	useScrollTop()
-	const { push } = useHistory()
-	const [position, setPosition] = useState({ latitude: 0, longitude: 0 })
-	const [loading, setLoading] = useState(false)
-	const [name, setName] = useState('')
+	useScrollTop();
+	const { push } = useHistory();
+	const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
+	const [loading, setLoading] = useState(false);
+	const [name, setName] = useState('');
 	const [adress, setAdress] = useState({
 		neighborhood: '',
 		street: '',
 		number: '',
 		complement: '',
-	})
-	const [whatsapp, setWhatsapp] = useState('')
-	const [description, setDescripion] = useState('')
+	});
+	const [whatsapp, setWhatsapp] = useState('');
+	const [description, setDescripion] = useState('');
 
 	const handleClickComplaint = async () => {
 		if (await alreadyComplainedCheck()) {
-			return
+			return;
 		}
 
 		if (position.longitude === 0 || position.latitude === 0) {
@@ -61,8 +61,8 @@ const Complaint: React.FC = () => {
 				'Localização necessária',
 				'Você precisa selecionar um local no mapa para a reclamação.',
 				'error'
-			)
-			return
+			);
+			return;
 		}
 
 		const schema = yup.object().shape({
@@ -78,7 +78,7 @@ const Complaint: React.FC = () => {
 				.string()
 				.required('Você precisa fornecer um número no endereço'),
 			description: yup.string().required('O campo descrição é obrigatória!'),
-		})
+		});
 
 		try {
 			await schema.validate(
@@ -93,17 +93,21 @@ const Complaint: React.FC = () => {
 					longitude: position.longitude,
 				},
 				{ abortEarly: false }
-			)
+			);
 		} catch (error) {
-			error.errors.map((msg: string) => toast.error(msg, { autoClose: 10000 }))
-			return
+			if (error && error instanceof yup.ValidationError) {
+				error.errors.map((msg: string) =>
+					toast.error(msg, { autoClose: 10000 })
+				);
+			}
+			return;
 		}
 
 		try {
 			if (loading) {
-				return
+				return;
 			}
-			setLoading(true)
+			setLoading(true);
 
 			const complaintInfo = {
 				name,
@@ -115,50 +119,50 @@ const Complaint: React.FC = () => {
 				description,
 				latitude: position.latitude,
 				longitude: position.longitude,
-			}
+			};
 
-			await api.post('/complaints', complaintInfo)
+			await api.post('/complaints', complaintInfo);
 
-			localStorage.setItem('@complained', JSON.stringify({ date: Date.now() }))
+			localStorage.setItem('@complained', JSON.stringify({ date: Date.now() }));
 			await swal(
 				'Reclamação registrada',
 				'A sua reclamação já está registrada em nosso sistema, em breve ela será visualizada e resolvida. Muito obrigado!',
 				'success'
-			)
+			);
 		} catch (error) {
 			await swal(
 				'Aconteceu um problema',
 				'Nossas máquinas estão enfrentando alguns problemas, tente registrar esta reclamação mais tarde',
 				'error'
-			)
+			);
 		} finally {
-			setLoading(false)
-			push('/')
+			setLoading(false);
+			push('/');
 		}
-	}
+	};
 
 	const handleMapClick = (event: LeafletMouseEvent) => {
 		setPosition({
 			latitude: event.latlng.lat,
 			longitude: event.latlng.lng,
-		})
-	}
+		});
+	};
 
 	const handleLocationFound = (event: LocationEvent) => {
 		swal(
 			'Localização encontrada!',
 			'Lembre-se que a localização nem sempre é tão precisa. Então verifique se a localização da lixeira em laranja é a mesma que a do seu endereço',
 			'success'
-		)
-		setPosition({ latitude: event.latlng.lat, longitude: event.latlng.lng })
-	}
+		);
+		setPosition({ latitude: event.latlng.lat, longitude: event.latlng.lng });
+	};
 
 	const handleChangeAdress = (
 		value: string,
 		keyToChange: keyof typeof adress
 	) => {
-		setAdress((prevState) => ({ ...prevState, [keyToChange]: value }))
-	}
+		setAdress((prevState) => ({ ...prevState, [keyToChange]: value }));
+	};
 
 	return (
 		<>
@@ -175,9 +179,22 @@ const Complaint: React.FC = () => {
 				</Title>
 				<ContentText>
 					<p>
-						Para efetuar uma reclamação, se caso o caminhão de coleta não passou
-						pela sua região, deve ser verificado primeiro as data pré-definidas{' '}
-						<Link to="/datas">aqui</Link>.
+						Verifique primeiro se caso o caminhão de coleta não passou pela sua
+						região nas datas pré-definidas <Link to="/datas">aqui</Link>.
+					</p>
+					<p>
+						Após isto, realize sua reclamação informando corretamente no Passo 1
+						as informações solicitadas, como o nome do solicitante, endereço
+						completo, Whatsapp com DDD e descrição de sua descrição.
+					</p>
+					<p>
+						No Passo 2, informe o ponto da não-coleta no mapa e confirme em
+						adicionar reclamação.
+					</p>
+					<p>
+						Estes dois passos são importantes para que o problema de não
+						recolhimento de lixo de sua cidade, seja localizado e solucionado
+						pela prefeitura.
 					</p>
 					<p>Então, siga o passo a passo da seguinte forma:</p>
 				</ContentText>
@@ -244,7 +261,7 @@ const Complaint: React.FC = () => {
 							/>
 						</AddressInfoContainer>
 						<AnimatedInputText
-							label="Telefone com DDD"
+							label="Whatsapp com DDD"
 							value={whatsapp}
 							onChange={(e) => setWhatsapp(e.replace(/\D+/gi, ''))}
 						/>
@@ -259,10 +276,10 @@ const Complaint: React.FC = () => {
 							<SiOpenstreetmap size={32} /> Passo 2
 						</p>
 						<p>
-							Clique no botão “Auto Localize” ou dê um zoom no mapa com a
-							rolagem do mouse ou botão com símbolo “+” no lado esquerdo. Assim
-							que localizar o ponto da não-coleta marque com um clique. Em ambas
-							as ações, confirme no botão “Adicionar reclamação”.
+							Clique no botão “AutoLocalize” ou dê um zoom no mapa com a rolagem
+							do mouse ou botão com símbolo “+” no lado esquerdo. Assim que
+							localizar o ponto da não-coleta marque com um clique. Em ambas as
+							ações, confirme no botão “Adicionar reclamação”.
 						</p>
 					</ComplaintStep>
 					<ComplaintMapContainer>
@@ -297,7 +314,7 @@ const Complaint: React.FC = () => {
 			</ComplaintContentContainer>
 			<Footer />
 		</>
-	)
-}
+	);
+};
 
-export default Complaint
+export default Complaint;

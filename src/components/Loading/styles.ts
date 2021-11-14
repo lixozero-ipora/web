@@ -1,7 +1,7 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components';
 
 interface SizeProps {
-	size: 'normal' | 'large'
+	size: 'normal' | 'large';
 }
 
 export const LoadingContainer = styled.div`
@@ -10,13 +10,13 @@ export const LoadingContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-`
+`;
 
 export const LoadingMessage = styled.span<SizeProps>`
 	color: var(--color-green);
 	font-size: ${(props) => (props.size === 'normal' ? '1.4rem' : '2rem')};
 	margin-right: 15px;
-`
+`;
 
 const spin = keyframes`
   0% {
@@ -25,7 +25,7 @@ const spin = keyframes`
   100% {
     transform: rotate(360deg);
   }
-`
+`;
 
 export const LoadingElement = styled.span<SizeProps>`
 	width: ${(props) => (props.size === 'normal' ? '30px' : '45px')};
@@ -40,4 +40,4 @@ export const LoadingElement = styled.span<SizeProps>`
 	border-left-color: transparent;
 
 	animation: ${spin} 1000ms linear infinite;
-`
+`;

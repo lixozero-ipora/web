@@ -1,13 +1,13 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 import {
 	ButtonOutline,
 	CardWithBrandThreeTexts,
 	ContentContainer,
-} from '../../components/Common/styles'
+} from '../../components/Common/styles';
 
 export const EditScheduleContainer = styled(ContentContainer)`
 	width: 60%;
-`
+`;
 
 export const StepsContainer = styled.div`
 	${CardWithBrandThreeTexts} {
@@ -15,7 +15,7 @@ export const StepsContainer = styled.div`
 		color: var(--color-text-dark);
 		background-color: transparent;
 	}
-`
+`;
 
 export const InputsContainer = styled.div`
 	background-color: white;
@@ -43,4 +43,4 @@ export const InputsContainer = styled.div`
 		padding: 0;
 		background-color: transparent;
 	}
-`
+`;
