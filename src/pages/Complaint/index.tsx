@@ -185,7 +185,7 @@ const Complaint: React.FC = () => {
 					<p>
 						Após isto, realize sua reclamação informando corretamente no Passo 1
 						as informações solicitadas, como o nome do solicitante, endereço
-						completo, Whatsapp com DDD e descrição de sua descrição.
+						completo, Whatsapp com DDD e descrição de sua ocorrência.
 					</p>
 					<p>
 						No Passo 2, informe o ponto da não-coleta no mapa e confirme em
