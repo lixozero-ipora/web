@@ -8,8 +8,8 @@ const Footer: React.FC = () => (
 			<p>
 				Este App Web foi desenvolvido pelos acadêmicos do curso de{' '}
 				<strong>
-					Análise e Desenvolvimento de Sistemas do Instituto Federal Goiano -
-					Campus Iporá
+					Tecnologia em Análise e Desenvolvimento de Sistemas do Instituto
+					Federal Goiano - Campus Iporá
 				</strong>
 				, sob a supervisão da Prof. Me. Luciana Recart Cardoso.
 			</p>
