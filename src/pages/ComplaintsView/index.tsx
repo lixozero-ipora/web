@@ -163,11 +163,11 @@ const ComplaintsView: React.FC = () => {
 				<ComplaintsBoxContainer data-aos="fade-left">
 					<ButtonOutline onClick={handleShowSolved}>
 						{showSolved
-							? 'Esconder reclamações resolvidas'
-							: 'Mostrar reclamações resolvidas'}
+							? 'Ocultar Reclamação Resolvida'
+							: 'Exibir Reclamação Resolvida'}
 					</ButtonOutline>
 					<ButtonOutline onClick={handleGenerateReport}>
-						Gerar relatório
+						Exportar Relatório
 					</ButtonOutline>
 					{!complaints.showing.id && (
 						<ComplaintMessage>
@@ -189,14 +189,14 @@ const ComplaintsView: React.FC = () => {
 								.
 							</span>
 							<span className="card">
-								<strong>Ocorrências</strong>: Em um raio de 30 metros,{' '}
-								<strong>{complaints.showing.occurrences}</strong>
+								<strong>Aviso de acúmulo da reclamação </strong>: Em um raio de
+								30 metros, <strong>{complaints.showing.occurrences}</strong>
 								{complaints.showing.occurrences > 1
 									? ' pessoas reclamaram'
 									: ' pessoa reclamou'}{' '}
 								neste ponto de não coleta.
 							</span>
-							<strong className="red">Reclamações ativas:</strong>
+							<strong className="red">Reclamações Ativas:</strong>
 							{!complaints.showing.active.length && (
 								<span className="card">Nenhuma reclamação ativa</span>
 							)}
@@ -211,12 +211,12 @@ const ComplaintsView: React.FC = () => {
 									description={citizen.description}
 									created_at={citizen.created_at}
 									showButton
-									buttonText="Resolver reclamação"
+									buttonText="Solucionar reclamação"
 									buttonColor="var(--color-orange)"
 									buttonOnClick={handleSolveComplaint}
 								/>
 							))}
-							<strong className="green">Reclamações resolvidas:</strong>
+							<strong className="green">Reclamações Resolvidas:</strong>
 							{!complaints.showing.solved.length && (
 								<span className="card">Nenhuma reclamação resolvida</span>
 							)}
@@ -232,7 +232,7 @@ const ComplaintsView: React.FC = () => {
 									created_at={citizen.created_at}
 									solved_at={citizen.solved_at}
 									showButton
-									buttonText="Desfazer resolução da reclamação"
+									buttonText="Desfazer resolução reclamação"
 									buttonColor="var(--color-green)"
 									unsolve
 									buttonOnClick={handleSolveComplaint}

@@ -28,6 +28,7 @@ export default createGlobalStyle`
     font-family: Poppins, Arial, Helvetica, sans-serif;
   }
   button {
+    text-transform: capitalize;
     cursor: pointer;
   }
   

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { BsPencilSquare } from 'react-icons/bs';
+import { FiInfo } from 'react-icons/fi';
 import swal from 'sweetalert';
 import { EditingSchedule } from '../../@types';
 import AnimatedInputText from '../../components/AnimatedInputText';
 import {
-	ButtonOutline,
+	Button,
 	CardWithBrandThreeTexts,
 	ContentText,
 	Title,
@@ -20,6 +20,29 @@ import {
 	InputsContainer,
 	StepsContainer,
 } from './styles';
+
+const infoTexts = [
+	{
+		step: 'Selecione o(s) bairro(s) a serem alterados, clicando no botão de marcação disposto em cinza à esquerda.',
+		n: 1,
+	},
+	{
+		hint: 'Caso clique por engano, ou não deseje selecionar o(s) bairro(s), desmarque este botão. Para selecionar todos o(s) bairro(s), clique no botão “Selecionar todos”.',
+		n: 0,
+	},
+	{
+		step: 'Com o(s) bairro(s) selecionado(s), na caixa flutuante à esquerda da página, insira nos campos, a data inicial e, subsequente, a data final.',
+		n: 2,
+	},
+	{
+		hint: 'Para desmarcar o(s) bairro(s) já selecionados, clique no botão “Desfazer Seleção”. É recomendável clicar em “Desfazer Seleção” toda vez que for iniciar a alteração de outro bairro ou conjunto de bairros.',
+		n: 0,
+	},
+	{
+		step: 'Preenchido o campo inicial e final da data, clique no botão “Aplicar Alteração”',
+		n: 3,
+	},
+];
 
 const EditSchedule: React.FC = () => {
 	const [scheduleItems, isScheduleLoading] = useGetSchedules();
@@ -38,6 +61,10 @@ const EditSchedule: React.FC = () => {
 	}, [scheduleItems]);
 
 	useEffect(() => {
+		if (schedules.editing.length === 0) {
+			handleClearStartEnd();
+		}
+
 		if (newStart) {
 			changeDate('start', newStart);
 		}
@@ -101,6 +128,11 @@ const EditSchedule: React.FC = () => {
 		}));
 	};
 
+	const handleClearStartEnd = () => {
+		setNewStart('');
+		setNewEnd('');
+	};
+
 	const handleChangeStart = (input: string) => {
 		setNewStart(input);
 	};
@@ -110,6 +142,7 @@ const EditSchedule: React.FC = () => {
 
 	const handleClearEditing = () => {
 		setSchedules((prevState) => ({ ...prevState, editing: [] }));
+		handleClearStartEnd();
 	};
 
 	const handleSelectAll = () => {
@@ -128,51 +161,18 @@ const EditSchedule: React.FC = () => {
 				<ContentText>
 					<StepsContainer>
 						<p>Para alteração das datas de coleta, faça o seguinte:</p>
-						<CardWithBrandThreeTexts>
-							<p>
-								<BsPencilSquare size={32} /> Passo 1
-							</p>
-							<p>
-								Selecione os bairros a serem alterados, com clique no botão
-								“Ativar”, disposto em cinza à esquerda.
-							</p>
-						</CardWithBrandThreeTexts>
-						<CardWithBrandThreeTexts>
-							<p>
-								<BsPencilSquare size={32} /> Passo 2
-							</p>
-							<p>
-								Caso clique por engano, ou não deseje selecionar o bairro,
-								clique no mesmo botão “Desativar”.
-							</p>
-						</CardWithBrandThreeTexts>
-						<CardWithBrandThreeTexts>
-							<p>
-								<BsPencilSquare size={32} /> Passo 3
-							</p>
-							<p>
-								Em seguida, na caixa flutuante à esquerda da página, defina nos
-								campos, a data inicial e, subsequente, a data final.
-							</p>
-						</CardWithBrandThreeTexts>
-						<CardWithBrandThreeTexts>
-							<p>
-								<BsPencilSquare size={32} /> Passo 4
-							</p>
-							<p>
-								Para limpar os campos preenchidos relativo as datas por bairro,
-								clique no botão “Limpar”.
-							</p>
-						</CardWithBrandThreeTexts>
-						<CardWithBrandThreeTexts>
-							<p>
-								<BsPencilSquare size={32} /> Passo 5
-							</p>
-							<p>
-								Para selecionar todos os bairros, clique no botão “Selecionar
-								todos”.
-							</p>
-						</CardWithBrandThreeTexts>
+						{infoTexts.map(({ step, hint, n }, index) => (
+							<CardWithBrandThreeTexts
+								key={`card-${index}`}
+								bgColor={step ? '#c9c9c9' : '#b8b7b7'}
+							>
+								<p>
+									<FiInfo size={32} /> {step ? `Passo ${n}` : `Dica`}
+								</p>
+								{!!hint && <p>{hint}</p>}
+								{!!step && <p>{step}</p>}
+							</CardWithBrandThreeTexts>
+						))}
 					</StepsContainer>
 				</ContentText>
 
@@ -192,11 +192,9 @@ const EditSchedule: React.FC = () => {
 						onChange={handleChangeEnd}
 						value={newEnd}
 					/>
-					<ButtonOutline onClick={handleClearEditing}>Limpar</ButtonOutline>
-					<ButtonOutline onClick={handleSelectAll}>
-						Selecionar todos
-					</ButtonOutline>
-					<ButtonOutline onClick={handleSaveSchedule}>Salvar</ButtonOutline>
+					<Button onClick={handleClearEditing}>Desfazer Seleção</Button>
+					<Button onClick={handleSelectAll}>Selecionar Todos</Button>
+					<Button onClick={handleSaveSchedule}>Aplicar Alteração</Button>
 				</InputsContainer>
 
 				{isScheduleLoading && <Loading message="Carregando datas" />}

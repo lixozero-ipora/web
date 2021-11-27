@@ -125,9 +125,14 @@ export const ContentText = styled.div`
 	}
 `;
 
-export const CardWithBrandThreeTexts = styled.div`
+interface CardWithBrandThreeTextsProps {
+	bgColor?: string;
+}
+
+export const CardWithBrandThreeTexts = styled.div<CardWithBrandThreeTextsProps>`
 	display: flex;
-	background-color: var(--color-blue-opaque);
+	background-color: ${(props) =>
+		props.bgColor ? props.bgColor : 'var(--color-blue-opaque)'};
 	color: white;
 	border-radius: 10px;
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -138,11 +143,13 @@ export const CardWithBrandThreeTexts = styled.div`
 		align-items: center;
 		justify-content: center;
 		padding: 5px 0;
+		font-weight: bold;
 
 		svg {
 			margin-right: 10px;
 		}
 	}
+
 	p:nth-child(2) {
 		padding: 0 10px;
 		width: 80%;

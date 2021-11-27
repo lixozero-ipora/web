@@ -54,7 +54,7 @@ const CitizenInfo: React.FC<CitizenInfoProps> = ({
 						rel="noopener noreferrer"
 						className="whatsapp"
 					>
-						{whatsapp}
+						Enviar mensagem
 						<IoLogoWhatsapp size={22} color="var(--color-green)" />
 					</a>
 				) : (

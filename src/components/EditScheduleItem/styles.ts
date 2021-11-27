@@ -21,19 +21,19 @@ export const ActionButton = styled.div<ActionButtonProps>`
 	transition: all 300ms ease;
 	word-break: break-all;
 
-	background-color: ${(props) =>
-		props.isActive ? 'var(--color-blue-opaque)' : 'var(--color-gray-dark)'};
-
 	> button {
+		height: 100%;
+		width: 100%;
+
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 100%;
+
 		display: flex;
 		border: none;
-		background: none;
-		height: 100%;
 		color: white;
+		background-color: ${(props) =>
+			props.isActive ? 'var(--color-blue-opaque)' : '#f9f4f4'};
 		text-transform: capitalize;
 	}
 `;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FiCheck } from 'react-icons/fi';
 import { ScheduleItem } from '../../@types';
 import {
 	ActionButton,
@@ -27,7 +28,7 @@ const EditScheduleItem: React.FC<EditScheduleItemProps> = ({
 		<EditScheduleItemContainer>
 			<ActionButton isActive={isActive}>
 				<button type="button" onClick={handleChangeActive}>
-					{isActive ? 'ativo' : 'desativado'}
+					{!!isActive && <FiCheck size={27} />}
 				</button>
 			</ActionButton>
 			<EditItemInfo>

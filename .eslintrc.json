@@ -22,6 +22,7 @@
 	"plugins": ["react", "@typescript-eslint", "prettier"],
 	"rules": {
 		"prettier/prettier": "error",
+		"react/no-array-index-key": "off",
 		"react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
 		"no-tabs": "off",
 		"semi": "off",

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {
-	ButtonOutline,
+	Button,
 	CardWithBrandThreeTexts,
 	ContentContainer,
 } from '../../components/Common/styles';
@@ -13,7 +13,6 @@ export const StepsContainer = styled.div`
 	${CardWithBrandThreeTexts} {
 		margin: 20px 0;
 		color: var(--color-text-dark);
-		background-color: transparent;
 	}
 `;
 
@@ -31,7 +30,7 @@ export const InputsContainer = styled.div`
 	top: 40%;
 	left: 5px;
 
-	${ButtonOutline} {
+	${Button} {
 		margin: 5px 0;
 		width: 100%;
 		font-size: 1.5rem;
