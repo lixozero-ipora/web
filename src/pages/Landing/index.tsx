@@ -3,8 +3,8 @@ import { useHistory } from 'react-router-dom';
 import { MdAccountBalance, MdDateRange, MdHearing } from 'react-icons/md';
 import Slider from 'react-slick';
 
-import carouselImageOne from '../../assets/images/carousel_1.svg';
-import carouselImageTwo from '../../assets/images/carousel_2.svg';
+import carouselImageOne from '../../assets/images/carousel_1.png';
+import carouselImageTwo from '../../assets/images/carousel_2.png';
 import carouselImageThree from '../../assets/images/carousel_3.png';
 import scheduleDateSVG from '../../assets/images/schedule_date.svg';
 import complainSVG from '../../assets/images/complaint.svg';

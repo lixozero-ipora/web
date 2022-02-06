@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Nav, Logo, Hamburger, Menu, MenuLink } from './styles';
-import logo from '../../assets/images/recycling.svg';
+import logo from '../../assets/images/recycling.png';
 import { useAuth } from '../../store/authContext';
 
 const NavBar: React.FC = () => {
